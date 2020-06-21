@@ -9,44 +9,49 @@
 import SwiftUI
 
 struct MoviesView: View {
+    let movies = [
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7")
+    ]
+    
     var body: some View {
         NavigationView {
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 15) {
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
+            ZStack(alignment: .top) {
+                ScrollView(showsIndicators: false) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 10)
+                    .padding(.top)
+                    
+                    SectionView(title: "Now", type: "m", data: movies)
+                    
+                    SectionViewLarge(title: "Popular", type: "m", data: movies)
+                        .padding(.bottom, 100)
+                    
+                    Spacer()
                 }
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 15) {
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
-                        HotView()
-                    }
-                    .padding(.horizontal)
-                }
-                Spacer()
+                .offset(y: 70)
+                
+                NavBarView(title: "MOVIES")
             }
-        .navigationBarTitle("Movies")
-        .navigationBarItems(trailing:
-            Button(action: {
-                // search action
-            }) {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 26))
-        })
+            .navigationBarTitle("MOVIES")
+            .navigationBarHidden(true)
         }
-    .accentColor(Color("main_gradient_2"))
     }
 }
 

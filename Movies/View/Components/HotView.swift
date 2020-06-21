@@ -9,20 +9,24 @@
 import SwiftUI
 
 struct HotView: View {
-    private var width = UIScreen.main.bounds.size.width * 0.85
+    let image: String
+    let title: String
+    let description: String
+    
+    private let width = UIScreen.main.bounds.size.width * 0.75
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image("space_force")
+            Image(image)
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(8)
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Space Force")
+                    Text(title)
                         .foregroundColor(.white)
                         .font(.headline)
-                    Text("A group of people are tasked with establishing the U.S. Space Force.")
+                    Text(description)
                         .foregroundColor(.white)
                         .font(.footnote)
                 }
@@ -37,6 +41,6 @@ struct HotView: View {
 
 struct HotView_Previews: PreviewProvider {
     static var previews: some View {
-        HotView()
+        HotView(image: "space_force_banner", title: "Space Force", description: "A group of people are tasked with establishing the U.S. Space Force.")
     }
 }

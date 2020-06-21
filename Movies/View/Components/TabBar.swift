@@ -17,21 +17,21 @@ struct TabBar: View {
                 .tabItem {
                     Image(systemName: selection == 0 ? "film.fill" : "film")
                         .font(.system(size: 28))
-                    Text("First")
+                    Text("MOVIES")
                         .font(.system(size: 28))
                 }.tag(0)
             Text("Second View")
                 .tabItem {
                     Image(systemName: selection == 1 ? "tv.fill" : "tv")
                         .font(.system(size: 28))
-                    Text("Second")
+                    Text("TV")
                         .font(.system(size: 28))
                 }.tag(1)
             Text("Third View")
             .tabItem {
                 Image(systemName: selection == 2 ? "person.fill" : "person")
                     .font(.system(size: 28))
-                Text("Second")
+                Text("PROFILE")
                     .font(.system(size: 28))
             }.tag(2)
         }
