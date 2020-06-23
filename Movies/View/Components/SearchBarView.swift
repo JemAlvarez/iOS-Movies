@@ -24,12 +24,14 @@ struct SearchBarView: View {
                             withAnimation {
                                 self.text = ""
                             }
+                            self.haptic()
                         }) {
                             Image(systemName: "xmark")
                                 .resizable()
                                 .foregroundColor(Color(UIColor.systemGray6))
                                 .frame(width: 8, height: 8)
                                 .background(Circle().foregroundColor(Color(UIColor.systemGray2)).frame(width: 16, height: 16))
+                                .padding()
                         }
                     }
                 }
@@ -44,25 +46,30 @@ struct SearchBarView: View {
                     Text("Joker")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color("yellow"))
+                        .background(Color(UIColor.systemGray2))
                         .cornerRadius(30)
                         .padding(.bottom, 5)
                     Text("Joker")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color("yellow"))
+                        .background(Color(UIColor.systemGray2))
                         .cornerRadius(30)
                         .padding(.bottom, 5)
                     Text("Joker")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color("yellow"))
+                        .background(Color(UIColor.systemGray2))
                         .cornerRadius(30)
                 }
             }
         }
         .frame(maxWidth:.infinity)
         .opacity(show ? 1 : 0)
+    }
+    
+    func haptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
     }
 }
 

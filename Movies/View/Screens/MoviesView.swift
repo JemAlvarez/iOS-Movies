@@ -47,7 +47,7 @@ struct MoviesView: View {
                     
                     Spacer()
                 }
-                .offset(y: 70)
+                .offset(y: 100)
                 
                 NavBarView(title: "MOVIES", show: $show)
             }

@@ -19,6 +19,7 @@ struct NavBarView: View {
                 Text(title)
                     .font(.title)
                     .fontWeight(.semibold)
+                    .foregroundColor(Color("main_gradient_1"))
                 
                 Spacer()
                 
@@ -27,19 +28,36 @@ struct NavBarView: View {
                         self.show.toggle()
                         self.search = ""
                     }
+                    
+                    if self.show {
+                        self.openHaptic()
+                    } else {
+                        self.closeHaptic()
+                    }
+                    
                 }) {
                     Image(systemName: show ? "xmark.circle" : "magnifyingglass")
-                        .font(.system(size: 25, weight: .semibold))
-                        .foregroundColor(show ? .red : .primary)
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(show ? .red : Color("main_gradient_1"))
                 }
             }
             
             SearchBarView(text: $search, show: $show)
         }
-        .padding(.top, 30)
+        .padding(.top, 60)
         .padding(.bottom, 10)
         .padding(.horizontal)
         .background(Color("bg"))
+    }
+    
+    func openHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    func closeHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
     }
 }
 

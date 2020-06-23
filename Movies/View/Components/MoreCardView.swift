@@ -13,7 +13,7 @@ struct MoreCardView: View {
         Image(systemName: "plus")
             .font(.system(size: 70, weight: .bold))
             .frame(width: 145, height: 214)
-            .background(Color("yellow"))
+            .background(Color(UIColor.systemGray2))
             .foregroundColor(Color("offwhite"))
         .cornerRadius(8)
     }
