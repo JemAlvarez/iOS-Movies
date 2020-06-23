@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SectionViewLarge: View {
+struct SectionLargeView: View {
     let title: String
     let type: String
     let data: [Info]
@@ -46,7 +46,7 @@ struct SectionViewLarge: View {
 
 struct SectionViewLarge_Previews: PreviewProvider {
     static var previews: some View {
-        SectionViewLarge(title: "Popular", type: "m", data:
+        SectionLargeView(title: "Popular", type: "m", data:
             [
                 Info(image: "joker", title: "Joker", year: "2019", rating: "1.7"),
                 Info(image: "joker", title: "Joker", year: "2019", rating: "2.7"),

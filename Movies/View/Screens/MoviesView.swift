@@ -20,6 +20,8 @@ struct MoviesView: View {
         Info(image: "joker", title: "Joker", year: "2019", rating: "9.7")
     ]
     
+    @State var show = false
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -40,14 +42,14 @@ struct MoviesView: View {
                     
                     SectionView(title: "Now", type: "m", data: movies)
                     
-                    SectionViewLarge(title: "Popular", type: "m", data: movies)
+                    SectionLargeView(title: "Popular", type: "m", data: movies)
                         .padding(.bottom, 100)
                     
                     Spacer()
                 }
                 .offset(y: 70)
                 
-                NavBarView(title: "MOVIES")
+                NavBarView(title: "MOVIES", show: $show)
             }
             .navigationBarTitle("MOVIES")
             .navigationBarHidden(true)

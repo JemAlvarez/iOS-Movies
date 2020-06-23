@@ -10,26 +10,31 @@ import SwiftUI
 
 struct NavBarView: View {
     let title: String
-    // SEARCH BAR
-    //
-    //
-    //
-    // SEARCH BAR
+    @State var search = ""
+    @Binding var show: Bool
+    
     var body: some View {
-        HStack {
-            Text(title)
-                .font(.title)
-                .fontWeight(.semibold)
-            
-            Spacer()
-            
-            Button(action: {
-                print("search button action")
-            }) {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 25, weight: .semibold))
-                    .foregroundColor(.primary)
+        VStack() {
+            HStack {
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.semibold)
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation{
+                        self.show.toggle()
+                        self.search = ""
+                    }
+                }) {
+                    Image(systemName: show ? "xmark.circle" : "magnifyingglass")
+                        .font(.system(size: 25, weight: .semibold))
+                        .foregroundColor(show ? .red : .primary)
+                }
             }
+            
+            SearchBarView(text: $search, show: $show)
         }
         .padding(.top, 30)
         .padding(.bottom, 10)
@@ -40,6 +45,6 @@ struct NavBarView: View {
 
 struct NavBarView_Previews: PreviewProvider {
     static var previews: some View {
-        NavBarView(title: "MOVIES")
+        NavBarView(title: "MOVIES", show: .constant(false))
     }
 }
