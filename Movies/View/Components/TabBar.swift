@@ -38,7 +38,7 @@ struct TabBar: View {
                 Text("SETTINGS")
             }.tag(3)
         }
-        .accentColor(Color("main_gradient_2"))
+        .accentColor(Color("main_gradient_1"))
     }
 }
 

@@ -10,14 +10,14 @@ import SwiftUI
 
 struct MoviesView: View {
     let movies = [
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "9.7")
+        Info(image: "joker", title: "Joker", year: "2019", rating: "1.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "2.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "3.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "4.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "5.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "6.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "7.7"),
+        Info(image: "joker", title: "Joker", year: "2019", rating: "8.7")
     ]
     
     @State var show = false
