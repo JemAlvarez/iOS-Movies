@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "joaquin_phoenix.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

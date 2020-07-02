@@ -21,6 +21,7 @@ struct MoviesView: View {
     ]
     
     @State var show = false
+    @State var blurAmount: CGFloat = 20
     
     var body: some View {
         NavigationView {
@@ -47,7 +48,17 @@ struct MoviesView: View {
                     
                     Spacer()
                 }
+                .blur(radius: show ? blurAmount : 0)
                 .offset(y: 100)
+                
+                if show {
+                    Color.gray.opacity(0.01)
+                        .onTapGesture {
+                            withAnimation {
+                                self.show = false
+                            }
+                    }
+                }
                 
                 NavBarView(title: "MOVIES", show: $show)
             }
