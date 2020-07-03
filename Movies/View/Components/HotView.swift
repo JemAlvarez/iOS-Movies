@@ -16,26 +16,30 @@ struct HotView: View {
     private let width = UIScreen.main.bounds.size.width * 0.75
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Image(image)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(8)
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .foregroundColor(.white)
-                        .font(.headline)
-                    Text(description)
-                        .foregroundColor(.white)
-                        .font(.footnote)
+        NavigationLink(destination: MovieView()) {
+            ZStack(alignment: .bottom) {
+                Image(image)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(8)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                        Text(description)
+                            .foregroundColor(.white)
+                            .font(.footnote)
+                            .lineLimit(3)
+                    }
+                    Spacer()
                 }
-                Spacer()
+                .padding(10)
             }
-            .padding(10)
+            .frame(width: width, height: width * 0.6)
+            .shadow(radius: 5 , y: 7)
         }
-        .frame(width: width, height: width * 0.6)
-        .shadow(radius: 5 , y: 7)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -10,9 +10,10 @@ import SwiftUI
 
 struct MoreCardView: View {
     let data: [Info]
+    let title: String
     
     var body: some View {
-        NavigationLink(destination: ListView(title: "Now", type: "m", data: data)) {
+        NavigationLink(destination: ListView(title: title, type: "m", data: data)) {
             Image(systemName: "plus")
                 .font(.system(size: 70, weight: .bold))
                 .frame(width: 145, height: 214)
@@ -34,6 +35,6 @@ struct MoreCardView_Previews: PreviewProvider {
             Info(image: "joker", title: "Joker", year: "2019", rating: "6.7"),
             Info(image: "joker", title: "Joker", year: "2019", rating: "7.7"),
             Info(image: "joker", title: "Joker", year: "2019", rating: "8.7")
-        ])
+        ], title: "Now")
     }
 }

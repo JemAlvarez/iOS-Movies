@@ -43,28 +43,16 @@ struct SearchBarView: View {
             
             VStack (spacing: 0) {
                 if show && !text.isEmpty {
-                    Text("Joker")
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color(UIColor.systemGray2))
-                        .cornerRadius(30)
-                        .padding(.bottom, 5)
-                    Text("Joker")
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color(UIColor.systemGray2))
-                        .cornerRadius(30)
-                        .padding(.bottom, 5)
-                    Text("Joker")
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(Color(UIColor.systemGray2))
-                        .cornerRadius(30)
+                    SearchResultView(title: "Joker")
+                    SearchResultView(title: "Joker")
+                    SearchResultView(title: "Joker")
+                    SearchResultView(title: "Joker")
+                    SearchResultView(title: "Joker")
                 }
             }
         }
         .frame(maxWidth:.infinity)
-        .opacity(show ? 1 : 0)
+//        .opacity(show ? 1 : 0)
     }
     
     func haptic() {
@@ -72,6 +60,20 @@ struct SearchBarView: View {
         generator.notificationOccurred(.warning)
     }
 }
+
+struct SearchResultView: View {
+    let title: String
+    
+    var body: some View {
+        Text(title)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(Color(UIColor.systemGray2))
+            .cornerRadius(30)
+            .padding(.bottom, 5)
+    }
+}
+
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {

@@ -26,7 +26,7 @@ struct SectionView: View {
                             MovieCardView(image: item.image, title: item.title, year: item.year, rating: item.rating)
                         }
                     }
-                    MoreCardView(data: data)
+                    MoreCardView(data: data, title: title)
                 }
                 .padding(.horizontal)
             }

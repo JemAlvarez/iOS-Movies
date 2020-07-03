@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MovieView: View {
+    @State var show = true
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             ZStack (alignment: .top) {
@@ -17,11 +19,13 @@ struct MovieView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(height: 350)
+                        .opacity(show ? 1 : 0)
                 }
                 .offset(y: -45)
                 
-                MovieNavView()
+                MovieNavView(show: $show)
                     .frame(width: UIScreen.main.bounds.size.width)
+                    .padding(.top)
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
@@ -32,9 +36,12 @@ struct MovieView: View {
 struct MovieNavView: View {
     @Environment(\.presentationMode) var mode
     
+    @Binding var show: Bool
+    
     var body: some View {
         HStack {
             Button (action: {
+                self.show = false
                 self.mode.wrappedValue.dismiss()
             }) {
                 HStack(spacing: 10) {

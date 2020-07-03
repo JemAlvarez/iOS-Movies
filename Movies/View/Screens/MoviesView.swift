@@ -51,6 +51,7 @@ struct MoviesView: View {
                 .blur(radius: show ? blurAmount : 0)
                 .offset(y: 100)
                 
+                // search blur background with dismiss actions
                 if show {
                     Color.gray.opacity(0.01)
                         .onTapGesture {
@@ -58,6 +59,16 @@ struct MoviesView: View {
                                 self.show = false
                             }
                     }
+                    .gesture(
+                        DragGesture()
+                            .onEnded{ val in
+                                if val.location.y < val.startLocation.y {
+                                    withAnimation {
+                                        self.show = false
+                                    }
+                                }
+                        }
+                    )
                 }
                 
                 NavBarView(title: "MOVIES", show: $show)
