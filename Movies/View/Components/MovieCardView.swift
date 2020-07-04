@@ -9,25 +9,22 @@
 import SwiftUI
 
 struct MovieCardView: View {
-    let image: String
-    let title: String
-    let year: String
-    let rating: String
+    let movie: Info
     
     private let width = UIScreen.main.bounds.size.width * 0.35
     
     var body: some View {
-        NavigationLink(destination: MovieView()) {
+        NavigationLink(destination: MovieView(movie: movie)) {
             VStack {
                 ZStack(alignment: .bottom) {
-                    Image(image)
+                    Image(movie.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(8)
                         .shadow(radius: 7, y: 10)
                     
                     VStack(alignment: .trailing) {
-                        Text(rating)
+                        Text(movie.rating)
                             .foregroundColor(Color("offwhite"))
                             .font(.system(size: 15))
                             .frame(width: 25, height: 25)
@@ -38,7 +35,7 @@ struct MovieCardView: View {
                         
                         Spacer()
                         
-                        Text(year)
+                        Text(movie.year)
                             .foregroundColor(Color("offwhite"))
                             .font(.footnote)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -47,7 +44,7 @@ struct MovieCardView: View {
                 }
                 .frame(height: width * 1.48)
                 
-                Text(title)
+                Text(movie.title)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
             }
@@ -59,6 +56,19 @@ struct MovieCardView: View {
 
 struct MovieCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardView(image: "joker", title: "Joker", year: "2019", rating: "9.6")
+        MovieCardView(movie:
+            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+            ])
+        )
     }
 }

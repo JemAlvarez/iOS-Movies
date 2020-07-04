@@ -10,14 +10,102 @@ import SwiftUI
 
 struct MoviesView: View {
     let movies = [
-        Info(image: "joker", title: "Joker", year: "2019", rating: "1.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "2.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "3.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "4.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "5.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "6.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "7.7"),
-        Info(image: "joker", title: "Joker", year: "2019", rating: "8.7")
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ])
     ]
     
     @State var show = false
@@ -29,12 +117,14 @@ struct MoviesView: View {
                 ScrollView(showsIndicators: false) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
-                            HotView(image: "joker_banner", title: "Joker", description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City")
+                            HotView(data: movies[0])
+                            HotView(data: movies[1])
+                            HotView(data: movies[2])
+                            HotView(data: movies[3])
+                            HotView(data: movies[4])
+                            HotView(data: movies[5])
+                            HotView(data: movies[6])
+                            HotView(data: movies[7])
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 10)

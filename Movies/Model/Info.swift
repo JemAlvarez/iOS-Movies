@@ -11,7 +11,11 @@ import Foundation
 struct Info: Identifiable {
     let id = UUID()
     let image: String
+    let banner: String
+    let backdrop: String
     let title: String
     let year: String
     let rating: String
+    let description: String
+    let cast: [Actor]
 }

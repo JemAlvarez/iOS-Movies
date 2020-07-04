@@ -9,25 +9,23 @@
 import SwiftUI
 
 struct HotView: View {
-    let image: String
-    let title: String
-    let description: String
+    let data: Info
     
     private let width = UIScreen.main.bounds.size.width * 0.75
     
     var body: some View {
-        NavigationLink(destination: MovieView()) {
+        NavigationLink(destination: MovieView(movie: data)) {
             ZStack(alignment: .bottom) {
-                Image(image)
+                Image(data.banner)
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(8)
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(title)
+                        Text(data.title)
                             .foregroundColor(.white)
                             .font(.headline)
-                        Text(description)
+                        Text(data.description)
                             .foregroundColor(.white)
                             .font(.footnote)
                             .lineLimit(3)
@@ -45,6 +43,19 @@ struct HotView: View {
 
 struct HotView_Previews: PreviewProvider {
     static var previews: some View {
-        HotView(image: "space_force_banner", title: "Space Force", description: "A group of people are tasked with establishing the U.S. Space Force.")
+        HotView(data:
+            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+            ])
+        )
     }
 }
