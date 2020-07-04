@@ -138,6 +138,7 @@ struct MoviesView: View {
                     
                     Spacer()
                 }
+                .padding(.bottom)
                 .blur(radius: show ? blurAmount : 0)
                 .offset(y: 100)
                 

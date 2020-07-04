@@ -105,16 +105,31 @@ struct MovieView: View {
                     // cast
                     VStack {
                         VStack {
-                            Text("Full Cast & Crew")
+                            Text("Full Cast")
                                 .padding(.leading)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical)
                         .background(Color(UIColor.systemGray6))
                         
-//                        HStack {
-//                            
-//                        }
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                VStack (spacing: 20) {
+                                    HStack {
+                                        ForEach(movie.cast.prefix(movie.cast.count / 2)) { person in
+                                            ActorCardView(person: person)
+                                        }
+                                    }
+                                    
+                                    HStack {
+                                        ForEach(movie.cast.suffix(movie.cast.count / 2)) { person in
+                                            ActorCardView(person: person)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
                     }
                     .offset(y: -55)
                 }
@@ -141,9 +156,20 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
-//
-//struct MovieView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MovieView()
-//    }
-//}
+
+struct MovieView_Previews: PreviewProvider {
+    static var previews: some View {
+        MovieView(movie: Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+        ]))
+    }
+}
