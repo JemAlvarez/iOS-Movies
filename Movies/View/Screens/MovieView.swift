@@ -13,14 +13,114 @@ struct MovieView: View {
     
     let movie: Info
     
+    let recommendations = [
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+        Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+        ]),
+    ]
+    
     var body: some View {
-        ZStack (alignment: .top) {
-            ScrollView(showsIndicators: false) {
+        ScrollView(showsIndicators: false) {
+            ZStack (alignment: .top) {
+                
                 VStack(alignment: .leading) {
                     
                     // image drag stretchy animation
                     GeometryReader { g in
-                        Image("joker_backdrop")
+                        Image(self.movie.backdrop)
                             .resizable()
                             .scaledToFill()
                             .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
@@ -34,30 +134,30 @@ struct MovieView: View {
                         .frame(height: 350)
                     
                     VStack {
-                        // top part
+                        //                      top part
                         HStack(spacing: 20) {
-                            Image("joker")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 140)
-                            .cornerRadius(8)
-                            .shadow(radius: 7, y: 10)
+                            Image(movie.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 140)
+                                .cornerRadius(8)
+                                .shadow(radius: 7, y: 10)
                             
                             VStack(alignment: .leading) {
                                 Group {
-                                    Text("Joker".uppercased())
+                                    Text(movie.title.uppercased())
                                         .font(.system(size: 26))
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color.white)
-                                    +
-                                    Text("(2019)")
-                                        .foregroundColor(Color.white.opacity(0.8))
-                                        .font(.system(size: 20))
+                                        +
+                                        Text("(\(movie.year))")
+                                            .foregroundColor(Color.white.opacity(0.8))
+                                            .font(.system(size: 20))
                                 }
                                 .frame(height: 75)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
-                                Text("Put on a happy face.")
+                                Text(movie.subtitle)
                                     .italic()
                                     .padding(.top)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -65,27 +165,32 @@ struct MovieView: View {
                                     .lineLimit(2)
                                     .opacity(0.8)
                                 
-                                Text("Crime, Thriller, Drama")
-                                    .padding(.top)
+                                Text("\(movie.length ?? 0) minutes")
+                                    .padding(.top, 5)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.system(size: 11, weight: .bold))
+                                
+                                Text(movie.genres)
+                                    .padding(.top, 5)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .font(.system(size: 20))
                                     .lineLimit(1)
-                                                                    
-                                    LinearGradient(gradient: Gradient(colors: [Color("main_gradient_1"), Color("main_gradient_2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                        .mask(
-                                            HStack {
-                                                Text("9.8")
-                                                    .font(.system(size: 24))
-                                                    .padding(.trailing)
-                                                    .foregroundColor(Color("main_gradient_2"))
-                                                
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.lefthalf.fill")
-                                            }
-                                    )
+                                
+                                LinearGradient(gradient: Gradient(colors: [Color("main_gradient_1"), Color("main_gradient_2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    .mask(
+                                        HStack {
+                                            Text(movie.rating)
+                                                .font(.system(size: 24))
+                                                .padding(.trailing)
+                                                .foregroundColor(Color("main_gradient_2"))
+                                            
+                                            Image(systemName: "star.fill")
+                                            Image(systemName: "star.fill")
+                                            Image(systemName: "star.fill")
+                                            Image(systemName: "star.fill")
+                                            Image(systemName: "star.lefthalf.fill")
+                                        }
+                                )
                                 
                                 Spacer()
                             }
@@ -93,7 +198,7 @@ struct MovieView: View {
                         }
                         
                         // desc
-                        Text("During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psydchopathic crime figure.")
+                        Text(movie.description)
                             .font(.system(size: 23))
                             .foregroundColor(Color(UIColor.systemGray))
                             .padding(.top)
@@ -132,13 +237,58 @@ struct MovieView: View {
                         .padding(.horizontal)
                     }
                     .offset(y: -55)
+                    
+                    // cast
+                    VStack {
+                        VStack {
+                            Text("Recommendations")
+                                .padding(.leading)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical)
+                        .background(Color(UIColor.systemGray6))
+                        
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                VStack (spacing: 20) {
+                                    HStack {
+                                        ForEach(recommendations) { movie in
+                                            NavigationLink(destination: MovieView(movie: movie)) {
+                                                VStack {
+                                                    Image(movie.image)
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(height: 120)
+                                                        .cornerRadius(5)
+                                                        .shadow(radius: 4, y: 5)
+                                                    Text(movie.title)
+                                                        .font(.system(size: 12))
+                                                        .fontWeight(.semibold)
+                                                        .lineLimit(1)
+                                                    Text(movie.year)
+                                                        .font(.system(size: 10))
+                                                        .fontWeight(.thin)
+                                                }
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .offset(y: -55)
                 }
                 .offset(y: -45)
+                .padding(.bottom, -80)
+                
+                BackNavBarView(show: $show)
+                    .frame(width: UIScreen.main.bounds.size.width)
+                    .padding(.top)
             }
                 
-            BackNavBarView(show: $show)
-                .frame(width: UIScreen.main.bounds.size.width)
-                .padding(.top)
+                
                 
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
@@ -159,17 +309,19 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(movie: Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-            Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
-        ]))
+        MovieView(movie:
+            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+            ])
+        )
     }
 }

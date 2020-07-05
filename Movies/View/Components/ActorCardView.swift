@@ -31,6 +31,6 @@ struct ActorCardView: View {
 
 struct ActorCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorCardView(person: Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"))
+        ActorCardView(person: Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"))
     }
 }

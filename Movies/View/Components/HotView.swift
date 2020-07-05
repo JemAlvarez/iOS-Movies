@@ -44,17 +44,17 @@ struct HotView: View {
 struct HotView_Previews: PreviewProvider {
     static var previews: some View {
         HotView(data:
-            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", cast: [
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker")
+            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
+                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
             ])
         )
     }

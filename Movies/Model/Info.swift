@@ -17,5 +17,10 @@ struct Info: Identifiable {
     let year: String
     let rating: String
     let description: String
+    let subtitle: String
+    let genres: String
+    let length: Int?
+    let seasons: Int?
     let cast: [Actor]
+//    let recommendations: [Info]
 }
