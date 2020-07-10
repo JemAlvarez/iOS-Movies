@@ -8,19 +8,37 @@
 
 import Foundation
 
-struct Info: Identifiable {
-    let id = UUID()
-    let image: String
-    let banner: String
-    let backdrop: String
+struct MovieCard: Identifiable {
+    let id: Int
+    let poster_path: String?
+    let release_date: String
     let title: String
-    let year: String
-    let rating: String
-    let description: String
-    let subtitle: String
-    let genres: String
-    let length: Int?
-    let seasons: Int?
-    let cast: [Actor]
-//    let recommendations: [Info]
+    let vote_average: Double
+    let overview: String?
+    let backdrop_path: String?
+}
+
+struct Movie: Identifiable {
+    let id: Int
+    let backdrop_path: String?
+    let genres: [Genre]
+    let overview: String?
+    let poster_path: String?
+    let release_date: String
+    let runtime: Int?
+    let tagline: String?
+    let title: String
+    let vote_average: Double
+}
+
+struct CastCard: Identifiable {
+    let id: Int
+    let character: String
+    let name: String
+    let profile_path: String?
+}
+
+struct Genre: Identifiable {
+    let id: Int
+    let name: String
 }

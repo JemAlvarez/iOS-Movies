@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ActorCardView: View {
-    let person: Actor
+    let person: CastCard
     
     var body: some View {
         VStack {
-            Image("joaquin_phoenix")
+            Image(person.profile_path ?? "placeholder")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 120)
@@ -22,7 +22,7 @@ struct ActorCardView: View {
             Text(person.name)
                 .font(.system(size: 12))
                 .fontWeight(.semibold)
-            Text(person.character ?? "")
+            Text(person.character)
                 .font(.system(size: 10))
                 .fontWeight(.thin)
         }
@@ -31,6 +31,6 @@ struct ActorCardView: View {
 
 struct ActorCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorCardView(person: Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"))
+        ActorCardView(person: TempMovies.cast[0])
     }
 }

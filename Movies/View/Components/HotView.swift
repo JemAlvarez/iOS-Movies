@@ -9,23 +9,23 @@
 import SwiftUI
 
 struct HotView: View {
-    let data: Info
+    let movie: MovieCard
     
     private let width = UIScreen.main.bounds.size.width * 0.75
     
     var body: some View {
-        NavigationLink(destination: MovieView(movie: data)) {
+        NavigationLink(destination: MovieView(movieId: movie.id)) {
             ZStack(alignment: .bottom) {
-                Image(data.banner)
+                Image(movie.backdrop_path ?? "placeholder")
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(8)
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(data.title)
+                        Text(movie.title)
                             .foregroundColor(.white)
                             .font(.headline)
-                        Text(data.description)
+                        Text(movie.overview ?? "")
                             .foregroundColor(.white)
                             .font(.footnote)
                             .lineLimit(3)
@@ -43,19 +43,6 @@ struct HotView: View {
 
 struct HotView_Previews: PreviewProvider {
     static var previews: some View {
-        HotView(data:
-            Info(image: "joker", banner: "joker_banner", backdrop: "joker_backdrop", title: "Joker", year: "2019", rating: "1.7", description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.", subtitle: "Put on a happy face.", genres: "Crime, Thriller, Drama", length: 140, seasons: nil, cast: [
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-                Actor(name: "Joaquin Phoenix", character: "Arthur Fleck / Joker", image: "joaquin_phoenix"),
-            ])
-        )
+        HotView(movie: TempMovies.moviesCards[0])
     }
 }
