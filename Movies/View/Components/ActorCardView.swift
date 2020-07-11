@@ -12,20 +12,23 @@ struct ActorCardView: View {
     let person: CastCard
     
     var body: some View {
-        VStack {
-            Image(person.profile_path ?? "placeholder")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 120)
-                .cornerRadius(5)
-                .shadow(radius: 4, y: 5)
-            Text(person.name)
-                .font(.system(size: 12))
-                .fontWeight(.semibold)
-            Text(person.character)
-                .font(.system(size: 10))
-                .fontWeight(.thin)
+        NavigationLink (destination: ActorView(personId: 123)) {
+            VStack {
+                Image(person.profile_path ?? "placeholder_vertical")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 120)
+                    .cornerRadius(5)
+                    .shadow(radius: 4, y: 5)
+                Text(person.name)
+                    .font(.system(size: 12))
+                    .fontWeight(.semibold)
+                Text(person.character)
+                    .font(.system(size: 10))
+                    .fontWeight(.thin)
+            }
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

@@ -29,7 +29,7 @@ struct MovieView: View {
                         
                         // image drag stretchy animation
                         GeometryReader { g in
-                            Image(self.movie.backdrop_path ?? "placeholder")
+                            Image(self.movie.backdrop_path ?? "placeholder_horizontal")
                                 .resizable()
                                 .scaledToFill()
                                 .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
@@ -45,7 +45,7 @@ struct MovieView: View {
                         VStack {
                             //                      top part
                             HStack(spacing: 20) {
-                                Image(movie.poster_path ?? "placeholder")
+                                Image(movie.poster_path ?? "placeholder_vertical")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 140)
@@ -175,7 +175,7 @@ struct MovieView: View {
                                             ForEach(recommendations) { movie in
                                                 NavigationLink(destination: MovieView(movieId: movie.id)) {
                                                     VStack {
-                                                        Image(movie.poster_path ?? "placeholder")
+                                                        Image(movie.poster_path ?? "placeholder_vertical")
                                                             .resizable()
                                                             .scaledToFit()
                                                             .frame(height: 120)
@@ -214,46 +214,7 @@ struct MovieView: View {
                 .navigationBarHidden(true)
             }
             
-            if showDescription {
-                Color.black.edgesIgnoringSafeArea(.all).opacity(0.3)
-                    .onTapGesture {
-                        withAnimation {
-                            self.showDescription.toggle()
-                        }
-                }
-            }
-            
-            VStack {
-                Button(action: {
-                    withAnimation {
-                        self.showDescription.toggle()
-                    }
-                }) {
-                    Image(systemName: "chevron.down")
-                    .padding()
-                    .foregroundColor(Color("main_gradient_1"))
-                }
-                
-                Text(movie.overview ?? "")
-                    .padding(.top, 20)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.bottom, 100)
-            .padding(.horizontal)
-            .background(Color("bg"))
-            .cornerRadius(20)
-            .shadow(radius: 10)
-            .offset(y: showDescription ? 40 : 600)
-            .gesture(
-                DragGesture()
-                    .onEnded { ges in
-                        if ges.location.y > ges.startLocation.y {
-                            withAnimation {
-                                self.showDescription.toggle()
-                            }
-                        }
-                }
-            )
+            BottomCard(show: $showDescription, text: movie.overview, hideOffset: 600)
         }
     }
 }

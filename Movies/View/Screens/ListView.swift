@@ -16,7 +16,7 @@ struct ListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack{
-                Text("\(title) list")
+                Text("\(title)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 20, weight: .bold))
                     .opacity(0.7)

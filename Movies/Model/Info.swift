@@ -38,6 +38,23 @@ struct CastCard: Identifiable {
     let profile_path: String?
 }
 
+struct Person: Identifiable {
+    let id: Int
+    let birthday: String?
+    let name: String
+    let gender: Int
+    let biography: String
+    let place_of_birth: String?
+    let profile_path: String?
+}
+
+struct Credit: Identifiable {
+    let id: Int
+    let name: String
+    let release_date: String
+    let poster_path: String?
+}
+
 struct Genre: Identifiable {
     let id: Int
     let name: String

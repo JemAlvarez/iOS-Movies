@@ -16,7 +16,7 @@ struct HotView: View {
     var body: some View {
         NavigationLink(destination: MovieView(movieId: movie.id)) {
             ZStack(alignment: .bottom) {
-                Image(movie.backdrop_path ?? "placeholder")
+                Image(movie.backdrop_path ?? "placeholder_horizontal")
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(8)

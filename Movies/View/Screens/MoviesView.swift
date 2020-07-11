@@ -20,14 +20,9 @@ struct MoviesView: View {
                 ScrollView(showsIndicators: false) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
-                            HotView(movie: movies[0])
-                            HotView(movie: movies[1])
-                            HotView(movie: movies[2])
-                            HotView(movie: movies[3])
-                            HotView(movie: movies[4])
-                            HotView(movie: movies[5])
-                            HotView(movie: movies[6])
-                            HotView(movie: movies[7])
+                            ForEach(movies) { movie in
+                                HotView(movie: movie)
+                            }
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 10)
@@ -37,9 +32,23 @@ struct MoviesView: View {
                     SectionView(title: "Now", type: "m", movies: movies)
                     
                     SectionLargeView(title: "Popular", type: "m", movies: movies)
-                        .padding(.bottom, 100)
                     
-                    Spacer()
+                    NavigationLink(destination: ListView(title: "All", type: "m", data: movies)) {
+                        HStack {
+                            Text("View All")
+                                .foregroundColor(Color("main_gradient_1"))
+                            Image(systemName: "ellipsis.circle")
+                                .padding(.leading)
+                                .foregroundColor(Color("main_gradient_1"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical)
+                        .background(Color(UIColor.systemGray5))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    }
+                    .padding(.top, 30)
+                    .padding(.bottom, 100)
                 }
                 .padding(.bottom)
                 .blur(radius: show ? blurAmount : 0)
