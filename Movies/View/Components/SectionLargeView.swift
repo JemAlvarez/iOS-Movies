@@ -36,7 +36,7 @@ struct SectionLargeView: View {
                             MovieCardView(movie: item)
                         }
                     }
-                    MoreCardView(movies: movies, title: title)
+                    MoreMoviesCardView(movies: movies, title: title)
                 }
                 .padding(.horizontal)
             }

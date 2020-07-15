@@ -1,17 +1,16 @@
 //
-//  GridListView.swift
+//  TvListView.swift
 //  Movies
 //
-//  Created by Jem Alvarez on 6/27/20.
+//  Created by Jem Alvarez on 7/14/20.
 //  Copyright © 2020 Jem Alvarez. All rights reserved.
 //
 
 import SwiftUI
 
-struct ListView: View {
+struct TvListView: View {
     var title: String
-    var type: String
-    var data: [MovieCard]
+    var data: [TVCard]
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -23,21 +22,19 @@ struct ListView: View {
                     .padding()
                     .background(Color("bg"))
                 
-                if type == "m" {
                     HStack(spacing: 30) {
                         VStack {
-                            ForEach(data.prefix(data.count / 2)) { movie in
-                                MovieCardView(movie: movie)
+                            ForEach(data.prefix(data.count / 2)) { tv in
+                                TVCardView(type: "s", tv: tv)
                             }
                         }
                         
                         VStack {
-                            ForEach(data.suffix(data.count / 2)) { movie in
-                                MovieCardView(movie: movie)
+                            ForEach(data.suffix(data.count / 2)) { tv in
+                                TVCardView(type: "s", tv: tv)
                             }
                         }
                     }
-                }
             }
             .padding(.horizontal)
             .offset(y: -20)
@@ -45,8 +42,8 @@ struct ListView: View {
     }
 }
 
-struct ListView_Previews: PreviewProvider {
+struct TvListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(title: "Now", type: "m", data: TempMovies.moviesCards)
+        TvListView(title: "Popular", data: TempMovies.tvCards)
     }
 }

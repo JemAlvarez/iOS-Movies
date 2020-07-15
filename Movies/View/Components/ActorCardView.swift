@@ -34,6 +34,6 @@ struct ActorCardView: View {
 
 struct ActorCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorCardView(person: TempMovies.cast[0])
+        ActorCardView(person: TempMovies.movieCast[0])
     }
 }

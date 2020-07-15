@@ -31,6 +31,30 @@ extension UIApplication {
     }
 }
 
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+
+extension Sequence where Element: AdditiveArithmetic {
+    /// Returns the total sum of all elements in the sequence
+    func sum() -> Element { reduce(.zero, +) }
+}
+
+extension Collection where Element: BinaryInteger {
+    /// Returns the average of all elements in the array
+    func average() -> Element { isEmpty ? .zero : sum() / Element(count) }
+    /// Returns the average of all elements in the array as Floating Point type
+    func average<T: FloatingPoint>() -> T { isEmpty ? .zero : T(sum()) / T(count) }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

@@ -12,7 +12,7 @@ struct ActorView: View {
     let personId: Int
     
     let person = TempMovies.person
-    let knownFor = TempMovies.credits
+    let knownFor = TempMovies.movieCredits
     
     @State var showBio = false
     
@@ -136,7 +136,7 @@ struct ActorView: View {
                                 }
                             }
                         }
-                        .padding(.horizontal)
+                        .padding([.horizontal, .bottom])
                     }
                     
                     BackNavBarView(show: .constant(false))

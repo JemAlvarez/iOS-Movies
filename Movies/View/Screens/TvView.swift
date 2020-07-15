@@ -1,24 +1,24 @@
 //
-//  MovieView.swift
+//  TvView.swift
 //  Movies
 //
-//  Created by Jem Alvarez on 7/2/20.
+//  Created by Jem Alvarez on 7/14/20.
 //  Copyright © 2020 Jem Alvarez. All rights reserved.
 //
 
 import SwiftUI
 
-struct MovieView: View {
+struct TvView: View {
     @State var show = true
     @State var showDescription = false
     
-    let movieId: Int
+    let tvId: Int
     
-    let recommendations = TempMovies.moviesCards
+    let recommendations = TempMovies.tvCards
     
-    let movie = TempMovies.movie
+    let tv = TempMovies.tv
     
-    let cast = TempMovies.movieCast
+    let cast = TempMovies.tvCast
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -29,7 +29,7 @@ struct MovieView: View {
                         
                         // image drag stretchy animation
                         GeometryReader { g in
-                            Image(self.movie.backdrop_path ?? "placeholder_horizontal")
+                            Image(self.tv.backdrop_path ?? "placeholder_horizontal")
                                 .resizable()
                                 .scaledToFill()
                                 .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
@@ -45,7 +45,7 @@ struct MovieView: View {
                         VStack {
                             //                      top part
                             HStack(spacing: 20) {
-                                Image(movie.poster_path ?? "placeholder_vertical")
+                                Image(tv.poster_path ?? "placeholder_vertical")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 140)
@@ -54,33 +54,31 @@ struct MovieView: View {
                                 
                                 VStack(alignment: .leading) {
                                     Group {
-                                        Text(movie.title.uppercased())
+                                        Text(tv.name.uppercased())
                                             .font(.system(size: 22))
                                             .fontWeight(.semibold)
                                             .foregroundColor(Color.white)
                                             +
-                                            Text("(\(movie.release_date))")
+                                            Text("(\(tv.first_air_date))")
                                                 .foregroundColor(Color.white.opacity(0.8))
                                                 .font(.system(size: 20))
                                     }
                                     .frame(height: 75)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
-                                    Text(movie.tagline ?? "")
-                                        .italic()
-                                        .padding(.top)
+                                    Text("\(tv.number_of_seasons) \(tv.number_of_seasons > 1 ? "seasons" : "season")")
+                                        .padding(.top, 5)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .font(.system(size: 20))
-                                        .lineLimit(2)
-                                        .opacity(0.8)
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .padding(.top, 5)
                                     
-                                    Text("\(movie.runtime ?? 0) minutes")
+                                    Text("\(tv.episode_run_time.average()) minutes")
                                         .padding(.top, 5)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .font(.system(size: 11, weight: .bold))
                                     
                                     HStack {
-                                        ForEach(movie.genres) { genre in
+                                        ForEach(tv.genres) { genre in
                                             Text(genre.name)
                                                 .padding(.top, 5)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -92,7 +90,7 @@ struct MovieView: View {
                                     LinearGradient(gradient: Gradient(colors: [Color("main_gradient_1"), Color("main_gradient_2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                                         .mask(
                                             HStack {
-                                                Text("\(movie.vote_average, specifier: "%.1f")")
+                                                Text("\(tv.vote_average, specifier: "%.1f")")
                                                     .font(.system(size: 24))
                                                     .padding(.trailing)
                                                     .foregroundColor(Color("main_gradient_2"))
@@ -111,7 +109,7 @@ struct MovieView: View {
                             }
                             
                             // desc
-                            Text(movie.overview ?? "")
+                            Text(tv.overview ?? "")
                                 .font(.system(size: 23))
                                 .foregroundColor(Color(UIColor.systemGray))
                                 .padding(.top)
@@ -176,22 +174,19 @@ struct MovieView: View {
                                 HStack {
                                     VStack (spacing: 20) {
                                         HStack {
-                                            ForEach(recommendations) { movie in
-                                                NavigationLink(destination: MovieView(movieId: movie.id)) {
+                                            ForEach(recommendations) { tv in
+                                                NavigationLink(destination: TvView(tvId: tv.id)) {
                                                     VStack {
-                                                        Image(movie.poster_path ?? "placeholder_vertical")
+                                                        Image(tv.poster_path ?? "placeholder_vertical")
                                                             .resizable()
                                                             .scaledToFit()
                                                             .frame(height: 120)
                                                             .cornerRadius(5)
                                                             .shadow(radius: 4, y: 5)
-                                                        Text(movie.title)
+                                                        Text(tv.name)
                                                             .font(.system(size: 12))
                                                             .fontWeight(.semibold)
                                                             .lineLimit(1)
-                                                        Text(movie.release_date)
-                                                            .font(.system(size: 10))
-                                                            .fontWeight(.thin)
                                                     }
                                                 }
                                                 .buttonStyle(PlainButtonStyle())
@@ -218,13 +213,13 @@ struct MovieView: View {
                 .navigationBarHidden(true)
             }
             
-            BottomCard(show: $showDescription, text: movie.overview, hideOffset: 600)
+            BottomCard(show: $showDescription, text: tv.overview, hideOffset: 600)
         }
     }
 }
 
-struct MovieView_Previews: PreviewProvider {
+struct TvView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(movieId: TempMovies.movie.id)
+        TvView(tvId: TempMovies.tv.id)
     }
 }

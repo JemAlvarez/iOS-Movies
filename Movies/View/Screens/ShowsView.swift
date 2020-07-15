@@ -1,40 +1,54 @@
 //
-//  MoviesView.swift
+//  ShowsView.swift
 //  Movies
 //
-//  Created by Jem Alvarez on 6/19/20.
+//  Created by Jem Alvarez on 7/14/20.
 //  Copyright © 2020 Jem Alvarez. All rights reserved.
 //
 
 import SwiftUI
 
-struct MoviesView: View {
-    let movies = TempMovies.moviesCards
+struct ShowsView: View {
+    let tvs = TempMovies.tvCards
     
     @State var show = false
     @State var blurAmount: CGFloat = 20
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .top) {
+            ZStack (alignment: .top) {
                 ScrollView(showsIndicators: false) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 15) {
-                            ForEach(movies) { movie in
-                                HotView(movie: movie)
+                    Text("Latest")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .font(.system(size: 19, weight: .bold))
+                    
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        HStack (alignment: .top, spacing: 20) {
+                            ForEach(tvs) { tv in
+                                TVCardView(type: "s", tv: tv)
                             }
+
+                            MoreTvsCardView(tv: tvs, title: "Latest")
                         }
                         .padding(.horizontal)
-                        .padding(.bottom, 10)
                     }
-                    .padding(.top)
+                    .padding(.bottom)
                     
-                    SectionView(title: "Now", movies: movies)
-                        .padding(.bottom)
+                    Text("Popular")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .font(.system(size: 19, weight: .bold))
                     
-                    SectionLargeView(title: "Popular", type: "m", movies: movies)
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            ForEach (tvs) { tv in
+                                TVCardView(type: "l", tv: tv)
+                            }
+                        }
+                    }
                     
-                    NavigationLink(destination: MovieListView(title: "All", data: movies)) {
+                    NavigationLink(destination: TvListView(title: "All", data: tvs)) {
                         HStack {
                             Text("View All")
                                 .foregroundColor(Color("main_gradient_1"))
@@ -49,11 +63,11 @@ struct MoviesView: View {
                         .padding(.horizontal)
                     }
                     .padding(.top, 30)
-                    .padding(.bottom, 100)
+                    .padding(.bottom, 120)
                 }
                 .padding(.bottom)
                 .blur(radius: show ? blurAmount : 0)
-                .offset(y: 100)
+                .offset(y: 120)
                 
                 // search blur background with dismiss actions
                 if show {
@@ -75,16 +89,16 @@ struct MoviesView: View {
                     )
                 }
                 
-                NavBarView(title: "MOVIES", show: $show)
+                NavBarView(title: "TV", show: $show)
             }
-            .navigationBarTitle("MOVIES")
+            .navigationBarTitle("TV")
             .navigationBarHidden(true)
         }
     }
 }
 
-struct MoviesView_Previews: PreviewProvider {
+struct ShowsView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesView()
+        ShowsView()
     }
 }

@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct MoreCardView: View {
+struct MoreMoviesCardView: View {
     let movies: [MovieCard]
     let title: String
     
     var body: some View {
-        NavigationLink(destination: ListView(title: title, type: "m", data: movies)) {
+        NavigationLink(destination: MovieListView(title: title, data: movies)) {
             Image(systemName: "plus")
                 .font(.system(size: 70, weight: .bold))
                 .frame(width: 145, height: 214)
@@ -26,6 +26,6 @@ struct MoreCardView: View {
 
 struct MoreCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreCardView(movies: TempMovies.moviesCards, title: "Now")
+        MoreMoviesCardView(movies: TempMovies.moviesCards, title: "Now")
     }
 }

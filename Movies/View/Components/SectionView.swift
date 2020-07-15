@@ -10,7 +10,6 @@ import SwiftUI
 
 struct SectionView: View {
     let title: String
-    let type: String
     let movies: [MovieCard]
     
     var body: some View {
@@ -21,12 +20,10 @@ struct SectionView: View {
                 .padding(.leading)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) {
-                    if type == "m" {
-                        ForEach(movies) { item in
-                            MovieCardView(movie: item)
-                        }
+                    ForEach(movies) { item in
+                        MovieCardView(movie: item)
                     }
-                    MoreCardView(movies: movies, title: title)
+                    MoreMoviesCardView(movies: movies, title: title)
                 }
                 .padding(.horizontal)
             }
@@ -36,6 +33,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(title: "Now", type: "m", movies: TempMovies.moviesCards)
+        SectionView(title: "Now", movies: TempMovies.moviesCards)
     }
 }

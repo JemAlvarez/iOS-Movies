@@ -19,7 +19,7 @@ struct TabBar: View {
                         .font(.system(size: 20))
                     Text("MOVIES")
                 }.tag(0)
-            Text("TV View")
+            ShowsView()
                 .tabItem {
                     Image(systemName: selection == 1 ? "tv.fill" : "tv")
                         .font(.system(size: 20))
@@ -31,12 +31,18 @@ struct TabBar: View {
                     .font(.system(size: 20))
                 Text("PEOPLE")
             }.tag(2)
+            Text("Profile View")
+            .tabItem {
+                Image(systemName: selection == 3 ? "person.fill" : "person")
+                    .font(.system(size: 20))
+                Text("PROFILE")
+            }.tag(3)
             Text("Settings View")
             .tabItem {
                 Image(systemName: "gear")
                     .font(.system(size: 20))
                 Text("SETTINGS")
-            }.tag(3)
+            }.tag(4)
         }
         .accentColor(Color("main_gradient_1"))
     }

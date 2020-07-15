@@ -59,3 +59,24 @@ struct Genre: Identifiable {
     let id: Int
     let name: String
 }
+
+struct TVCard: Identifiable {
+    let id: Int
+    let name: String
+    let poster_path: String?
+    let backdrop_path: String?
+    let vote_average: Double
+}
+
+struct TV: Identifiable {
+    let id: Int
+    let backdrop_path: String?
+    let genres: [Genre]
+    let overview: String?
+    let poster_path: String?
+    let first_air_date: String
+    let episode_run_time: [Int]
+    let name: String
+    let vote_average: Double
+    let number_of_seasons: Int
+}
