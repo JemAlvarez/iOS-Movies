@@ -25,7 +25,7 @@ struct TabBar: View {
                         .font(.system(size: 20))
                     Text("TV")
                 }.tag(1)
-            Text("Actors View")
+            PeopleView()
             .tabItem {
                 Image(systemName: selection == 2 ? "person.crop.rectangle.fill" : "person.crop.rectangle")
                     .font(.system(size: 20))

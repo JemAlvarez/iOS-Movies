@@ -33,7 +33,7 @@ struct Movie: Identifiable {
 
 struct CastCard: Identifiable {
     let id: Int
-    let character: String
+    let character: String?
     let name: String
     let profile_path: String?
 }
@@ -79,4 +79,9 @@ struct TV: Identifiable {
     let name: String
     let vote_average: Double
     let number_of_seasons: Int
+}
+
+struct Page {
+    let page: Int
+    let total_pages: Int
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ActorCardView: View {
     let person: CastCard
+    let height: CGFloat
     
     var body: some View {
         NavigationLink (destination: ActorView(personId: 123)) {
@@ -17,15 +18,18 @@ struct ActorCardView: View {
                 Image(person.profile_path ?? "placeholder_vertical")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 120)
+                    .frame(height: height)
                     .cornerRadius(5)
                     .shadow(radius: 4, y: 5)
                 Text(person.name)
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
-                Text(person.character)
+                
+                if person.character != nil {
+                    Text(person.character ?? "")
                     .font(.system(size: 10))
                     .fontWeight(.thin)
+                }
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -34,6 +38,6 @@ struct ActorCardView: View {
 
 struct ActorCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ActorCardView(person: TempMovies.movieCast[0])
+        ActorCardView(person: TempMovies.movieCast[0], height: 120)
     }
 }

@@ -63,15 +63,25 @@ struct TempMovies {
     static let tv = TV(id: 012, backdrop_path: "space_force_backdrop", genres: [Genre(id: 123, name: "Comedy")], overview: "A four-star general begrudgingly teams up with an eccentric scientist to get the U.S. military's newest agency — Space Force — ready for lift-off.", poster_path: "space_force", first_air_date: "2020", episode_run_time: [30, 32], name: "Space Force", vote_average: 7.1, number_of_seasons: 1)
     
     static let tvCast = [
-        CastCard(id: 073, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 074, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 075, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 076, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 077, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 078, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 079, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 070, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 071, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell"),
-        CastCard(id: 072, character: "General Mark R. Naird", name: "Steve Carell", profile_path: "steve_carell")
+        CastCard(id: 073, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 074, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 075, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 076, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 077, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 078, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 079, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 070, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 071, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 072, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 063, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 064, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 065, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 066, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 067, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 068, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 069, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 060, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 061, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
+        CastCard(id: 062, character: nil, name: "Steve Carell", profile_path: "steve_carell")
     ]
 }

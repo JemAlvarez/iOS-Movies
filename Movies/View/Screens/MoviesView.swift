@@ -14,6 +14,9 @@ struct MoviesView: View {
     @State var show = false
     @State var blurAmount: CGFloat = 20
     
+    @State var pageNum = 1125
+    let totalPages = 2000
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -34,7 +37,7 @@ struct MoviesView: View {
                     
                     SectionLargeView(title: "Popular", type: "m", movies: movies)
                     
-                    NavigationLink(destination: MovieListView(title: "All", data: movies)) {
+                    NavigationLink(destination: MovieListView(title: "All", data: movies, pageNum: $pageNum, totalPages: totalPages)) {
                         HStack {
                             Text("View All")
                                 .foregroundColor(Color("main_gradient_1"))

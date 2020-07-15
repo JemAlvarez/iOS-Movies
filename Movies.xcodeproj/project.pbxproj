@@ -36,6 +36,8 @@
 		CAE8567E249ED09200E7B9F8 /* SectionLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8567D249ED09200E7B9F8 /* SectionLargeView.swift */; };
 		CAF63CAE24BE8A95000E4C03 /* ShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF63CAD24BE8A95000E4C03 /* ShowsView.swift */; };
 		CAF63CB024BE911B000E4C03 /* TVCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF63CAF24BE911B000E4C03 /* TVCardView.swift */; };
+		CAF87CB024BF5E1600D1A2FA /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF87CAF24BF5E1600D1A2FA /* PaginationView.swift */; };
+		CAF87CB224BF6F7200D1A2FA /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		CAE8567D249ED09200E7B9F8 /* SectionLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLargeView.swift; sourceTree = "<group>"; };
 		CAF63CAD24BE8A95000E4C03 /* ShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsView.swift; sourceTree = "<group>"; };
 		CAF63CAF24BE911B000E4C03 /* TVCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCardView.swift; sourceTree = "<group>"; };
+		CAF87CAF24BF5E1600D1A2FA /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
+		CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				CA39F95D24B80CBB00EA4E90 /* ActorView.swift */,
 				CAF63CAD24BE8A95000E4C03 /* ShowsView.swift */,
 				CAB1964124BE99DC0027EC6D /* TvListView.swift */,
+				CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				CA4079C324B0FCB700D5ABD3 /* ActorCardView.swift */,
 				CABEA7FC24B94040009E26FE /* BottomCard.swift */,
 				CAF63CAF24BE911B000E4C03 /* TVCardView.swift */,
+				CAF87CAF24BF5E1600D1A2FA /* PaginationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF87CB024BF5E1600D1A2FA /* PaginationView.swift in Sources */,
 				CA5DB5AD249DAD4C007381FB /* MoviesView.swift in Sources */,
 				CAB1964224BE99DC0027EC6D /* TvListView.swift in Sources */,
 				CA5DB591249DAB32007381FB /* AppDelegate.swift in Sources */,
@@ -277,6 +284,7 @@
 				CA39F95E24B80CBB00EA4E90 /* ActorView.swift in Sources */,
 				CA5DB598249DAB32007381FB /* ContentView.swift in Sources */,
 				CAE8567E249ED09200E7B9F8 /* SectionLargeView.swift in Sources */,
+				CAF87CB224BF6F7200D1A2FA /* PeopleView.swift in Sources */,
 				CA4079C424B0FCB700D5ABD3 /* ActorCardView.swift in Sources */,
 				CAB1964024BE99940027EC6D /* MoreTvsCardView.swift in Sources */,
 				CA5DB593249DAB32007381FB /* SceneDelegate.swift in Sources */,

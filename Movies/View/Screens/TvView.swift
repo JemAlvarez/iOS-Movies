@@ -144,13 +144,13 @@ struct TvView: View {
                                     VStack (spacing: 20) {
                                         HStack {
                                             ForEach(cast.prefix(cast.count / 2)) { person in
-                                                ActorCardView(person: person)
+                                                ActorCardView(person: person, height: 120)
                                             }
                                         }
                                         
                                         HStack {
                                             ForEach(cast.suffix(cast.count / 2)) { person in
-                                                ActorCardView(person: person)
+                                                ActorCardView(person: person, height: 120)
                                             }
                                         }
                                     }

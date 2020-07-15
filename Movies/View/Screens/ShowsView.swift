@@ -14,6 +14,9 @@ struct ShowsView: View {
     @State var show = false
     @State var blurAmount: CGFloat = 20
     
+    @State var pageNum = 1125
+    let totalPages = 2000
+    
     var body: some View {
         NavigationView {
             ZStack (alignment: .top) {
@@ -48,7 +51,7 @@ struct ShowsView: View {
                         }
                     }
                     
-                    NavigationLink(destination: TvListView(title: "All", data: tvs)) {
+                    NavigationLink(destination: TvListView(title: "All", data: tvs, pageNum: $pageNum, totalPages: totalPages)) {
                         HStack {
                             Text("View All")
                                 .foregroundColor(Color("main_gradient_1"))

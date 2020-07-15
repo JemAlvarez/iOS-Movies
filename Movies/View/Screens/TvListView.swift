@@ -11,6 +11,8 @@ import SwiftUI
 struct TvListView: View {
     var title: String
     var data: [TVCard]
+    @Binding var pageNum: Int
+    var totalPages: Int
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -35,6 +37,10 @@ struct TvListView: View {
                             }
                         }
                     }
+                
+                if title == "All" {
+                    PaginationView(pageNum: $pageNum, totalPages: totalPages)
+                }
             }
             .padding(.horizontal)
             .offset(y: -20)
@@ -44,6 +50,6 @@ struct TvListView: View {
 
 struct TvListView_Previews: PreviewProvider {
     static var previews: some View {
-        TvListView(title: "Popular", data: TempMovies.tvCards)
+        TvListView(title: "Popular", data: TempMovies.tvCards, pageNum: .constant(1), totalPages: 200)
     }
 }
