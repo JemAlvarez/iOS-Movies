@@ -38,6 +38,7 @@
 		CAF63CB024BE911B000E4C03 /* TVCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF63CAF24BE911B000E4C03 /* TVCardView.swift */; };
 		CAF87CB024BF5E1600D1A2FA /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF87CAF24BF5E1600D1A2FA /* PaginationView.swift */; };
 		CAF87CB224BF6F7200D1A2FA /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */; };
+		CAF87CB824BF7FBF00D1A2FA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF87CB724BF7FBF00D1A2FA /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		CAF63CAF24BE911B000E4C03 /* TVCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCardView.swift; sourceTree = "<group>"; };
 		CAF87CAF24BF5E1600D1A2FA /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
 		CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
+		CAF87CB724BF7FBF00D1A2FA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				CAF63CAD24BE8A95000E4C03 /* ShowsView.swift */,
 				CAB1964124BE99DC0027EC6D /* TvListView.swift */,
 				CAF87CB124BF6F7200D1A2FA /* PeopleView.swift */,
+				CAF87CB724BF7FBF00D1A2FA /* ProfileView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				CAF63CAE24BE8A95000E4C03 /* ShowsView.swift in Sources */,
 				CA5DB5B1249DB86C007381FB /* HotView.swift in Sources */,
 				CA8FF62B24AE2D83009C0E76 /* MovieView.swift in Sources */,
+				CAF87CB824BF7FBF00D1A2FA /* ProfileView.swift in Sources */,
 				CADEB3B6249EE02E001269AB /* MoreMoviesCardView.swift in Sources */,
 				CA2239BE24A7C49000798197 /* MovieListView.swift in Sources */,
 				CAC0302C249EACD500889AC0 /* MovieCardView.swift in Sources */,

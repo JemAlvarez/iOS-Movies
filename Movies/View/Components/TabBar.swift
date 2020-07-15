@@ -31,18 +31,12 @@ struct TabBar: View {
                     .font(.system(size: 20))
                 Text("PEOPLE")
             }.tag(2)
-            Text("Profile View")
-            .tabItem {
-                Image(systemName: selection == 3 ? "person.fill" : "person")
-                    .font(.system(size: 20))
-                Text("PROFILE")
-            }.tag(3)
-            Text("Settings View")
-            .tabItem {
-                Image(systemName: "gear")
-                    .font(.system(size: 20))
-                Text("SETTINGS")
-            }.tag(4)
+//            ProfileView()
+//            .tabItem {
+//                Image(systemName: selection == 3 ? "person.fill" : "person")
+//                    .font(.system(size: 20))
+//                Text("PROFILE")
+//            }.tag(3)
         }
         .accentColor(Color("main_gradient_1"))
     }
