@@ -62,7 +62,7 @@ struct SearchView: View {
                                             .fontWeight(.bold)
                                     }
                                     .frame(width: UIScreen.main.bounds.size.width - 40)
-                                }
+                                }.buttonStyle(PlainButtonStyle())
                             }
                         } else if selection == 1 {
                             ForEach(searchTv) { item in
