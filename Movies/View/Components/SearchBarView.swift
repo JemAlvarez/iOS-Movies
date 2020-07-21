@@ -12,12 +12,20 @@ struct SearchBarView: View {
     @Binding var text: String
     @Binding var show: Bool
     
+    @State var showingSearch = false
+    
     var body: some View {
         VStack{
             HStack {
                 if show {
                     Image(systemName: "magnifyingglass")
-                    TextField("Search", text: $text.animation())
+                    TextField("Search", text: $text.animation(), onCommit: {
+                        self.showingSearch.toggle()
+                    }).sheet(isPresented: $showingSearch, onDismiss: {
+                        self.show.toggle()
+                    }) {
+                        SearchView(text: self.text)
+                    }
                     Spacer()
                     if !text.isEmpty {
                         Button(action: {

@@ -85,3 +85,14 @@ struct Page {
     let page: Int
     let total_pages: Int
 }
+
+struct Search: Identifiable {
+    let id: Int
+    let backdrop_path: String?
+    let profile_path: String?
+    let vote_average: Double?
+    let release_date: String?
+    let title: String?
+    let name: String?
+    let media_type: String
+}

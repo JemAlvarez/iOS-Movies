@@ -84,4 +84,22 @@ struct TempMovies {
         CastCard(id: 061, character: nil, name: "Steve Carell", profile_path: "steve_carell"),
         CastCard(id: 062, character: nil, name: "Steve Carell", profile_path: "steve_carell")
     ]
+    
+    static let searchMovies = [
+        Search(id: 456, backdrop_path: "joker_backdrop", profile_path: nil, vote_average: 8.2, release_date: "2019", title: "Joker", name: nil, media_type: "movie"),
+        Search(id: 567, backdrop_path: "joker_backdrop", profile_path: nil, vote_average: 8.2, release_date: "2019", title: "Joker", name: nil, media_type: "movie"),
+        Search(id: 678, backdrop_path: "joker_backdrop", profile_path: nil, vote_average: 8.2, release_date: "2019", title: "Joker", name: nil, media_type: "movie")
+    ]
+    
+    static let searchTv = [
+        Search(id: 123, backdrop_path: "space_force_backdrop", profile_path: nil, vote_average: 7.1, release_date: nil, title: nil, name: "Space Force", media_type: "tv"),
+        Search(id: 234, backdrop_path: "space_force_backdrop", profile_path: nil, vote_average: 7.1, release_date: nil, title: nil, name: "Space Force", media_type: "tv"),
+        Search(id: 345, backdrop_path: "space_force_backdrop", profile_path: nil, vote_average: 7.1, release_date: nil, title: nil, name: "Space Force", media_type: "tv")
+    ]
+    
+    static let searchPerson = [
+        Search(id: 789, backdrop_path: nil, profile_path: "steve_carell", vote_average: nil, release_date: nil, title: nil, name: "Steve Carell", media_type: "person"),
+        Search(id: 890, backdrop_path: nil, profile_path: "steve_carell", vote_average: nil, release_date: nil, title: nil, name: "Steve Carell", media_type: "person"),
+        Search(id: 901, backdrop_path: nil, profile_path: "steve_carell", vote_average: nil, release_date: nil, title: nil, name: "Steve Carell", media_type: "person")
+    ]
 }
