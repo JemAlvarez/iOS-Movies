@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct HotView: View {
     let movie: MovieCard
@@ -16,10 +17,20 @@ struct HotView: View {
     var body: some View {
         NavigationLink(destination: MovieView(movieId: movie.id)) {
             ZStack(alignment: .bottom) {
-                Image(movie.backdrop_path ?? "placeholder_horizontal")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
+                URLImage(URL(string: "\(Api.imageUrl)\(movie.backdrop_path ?? "")")!, placeholder: {_ in
+                    Image("placeholder_horizontal")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(8)
+                        .shadow(radius: 7, y: 10)
+                })
+                { proxy in
+                    proxy.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(8)
+                        .shadow(radius: 7, y: 10)
+                }
                 HStack {
                     VStack(alignment: .leading) {
                         Text(movie.title)

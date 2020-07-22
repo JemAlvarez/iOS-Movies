@@ -10,7 +10,6 @@ import SwiftUI
 
 struct PaginationView: View {
     @Binding var pageNum: Int
-    
     let totalPages: Int
     
     var body: some View {

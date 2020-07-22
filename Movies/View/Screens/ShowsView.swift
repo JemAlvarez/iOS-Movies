@@ -14,7 +14,7 @@ struct ShowsView: View {
     @State var show = false
     @State var blurAmount: CGFloat = 20
     
-    @State var pageNum = 1125
+    @State var pageNum = 1
     let totalPages = 2000
     
     var body: some View {

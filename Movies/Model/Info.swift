@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MovieCard: Identifiable {
+struct MovieCard: Codable, Identifiable {
     let id: Int
     let poster_path: String?
     let release_date: String
@@ -81,9 +81,28 @@ struct TV: Identifiable {
     let number_of_seasons: Int
 }
 
-struct Page {
+struct Page: Codable {
     let page: Int
     let total_pages: Int
+}
+
+class MoviePageObj: ObservableObject {
+    @Published var pageNum: Int = 1 {
+        didSet {
+            Api.getAllMovieCards(path: "movie/popular", page: pageNum) { (movies) in
+                self.data = movies
+            }
+            self.showFromObj = true
+        }
+    }
+    var totalPages: Int = 500
+    @Published var showFromObj = false
+    
+    @Published var data: [MovieCard]
+    
+    init(data: [MovieCard]) {
+        self.data = data
+    }
 }
 
 struct Search: Identifiable {
@@ -95,4 +114,10 @@ struct Search: Identifiable {
     let title: String?
     let name: String?
     let media_type: String
+}
+
+// ----------
+
+struct Root: Codable {
+    let results: [MovieCard]
 }

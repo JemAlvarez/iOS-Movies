@@ -9,35 +9,40 @@
 import SwiftUI
 
 struct MoviesView: View {
-    let movies = TempMovies.moviesCards
+    @State var upcomingMovies = TempMovies.moviesCards
+    @State var nowPlayingMovies = TempMovies.moviesCards
+    @State var popularMovies = TempMovies.moviesCards
     
     @State var show = false
     @State var blurAmount: CGFloat = 20
-    
-    @State var pageNum = 1125
-    let totalPages = 2000
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
                 ScrollView(showsIndicators: false) {
+                    Text("In Theaters")
+                        .font(.system(size: 19))
+                        .fontWeight(.bold)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top)
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
-                            ForEach(movies) { movie in
+                            ForEach(nowPlayingMovies) { movie in
                                 HotView(movie: movie)
                             }
                         }
                         .padding(.horizontal)
                         .padding(.bottom, 10)
                     }
-                    .padding(.top)
                     
-                    SectionView(title: "Now", movies: movies)
+                    SectionView(title: "Upcoming", movies: upcomingMovies)
                         .padding(.bottom)
                     
-                    SectionLargeView(title: "Popular", type: "m", movies: movies)
+                    SectionLargeView(title: "Popular", type: "m", movies: popularMovies)
                     
-                    NavigationLink(destination: MovieListView(title: "All", data: movies, pageNum: $pageNum, totalPages: totalPages)) {
+                    NavigationLink(destination: MovieListView(title: "All", data: popularMovies)) {
                         HStack {
                             Text("View All")
                                 .foregroundColor(Color("main_gradient_1"))
@@ -79,6 +84,17 @@ struct MoviesView: View {
                 }
                 
                 NavBarView(title: "MOVIES", show: $show)
+            }
+            .onAppear {
+                Api.getMovieCards(path: "movie/now_playing") { (movies) in
+                    self.nowPlayingMovies = movies
+                }
+                Api.getMovieCards(path: "movie/popular") { (movies) in
+                    self.popularMovies = movies
+                }
+                Api.getMovieCards(path: "movie/upcoming") { (movies) in
+                    self.upcomingMovies = movies
+                }
             }
             .navigationBarTitle("MOVIES")
             .navigationBarHidden(true)

@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "NavigationStack",
-        "repositoryURL": "https://github.com/biobeats/swiftui-navigation-stack.git",
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
         "state": {
-          "branch": "master",
-          "revision": "fb19f34bdf36dd373d13d3397dc487d6c4f887cf",
-          "version": null
+          "branch": null,
+          "revision": "22eca5ee4f317e0283da75426849ee23f0516022",
+          "version": "0.9.19"
         }
       }
     ]

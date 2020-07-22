@@ -10,9 +10,9 @@ import SwiftUI
 
 struct MovieListView: View {
     var title: String
-    var data: [MovieCard]
-    @Binding var pageNum: Int
-    var totalPages: Int
+    @State var data: [MovieCard]
+    
+    @ObservedObject var page = MoviePageObj(data: TempMovies.moviesCards)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -26,30 +26,31 @@ struct MovieListView: View {
                 
                     HStack(spacing: 30) {
                         VStack {
-                            ForEach(data.prefix(data.count / 2)) { movie in
+                            ForEach(page.showFromObj ? page.data.prefix(page.data.count / 2) : data.prefix(data.count / 2)) { movie in
                                 MovieCardView(movie: movie)
                             }
                         }
                         
                         VStack {
-                            ForEach(data.suffix(data.count / 2)) { movie in
+                            ForEach(page.showFromObj ? page.data.suffix(page.data.count / 2) : data.suffix(data.count / 2)) { movie in
                                 MovieCardView(movie: movie)
                             }
                         }
                     }
                 
                 if title == "All" {
-                    PaginationView(pageNum: $pageNum, totalPages: totalPages)
+                    PaginationView(pageNum: $page.pageNum, totalPages: page.totalPages)
                 }
             }
             .padding(.horizontal)
             .offset(y: -20)
         }
+        .navigationBarHidden(false)
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView(title: "Now", data: TempMovies.moviesCards, pageNum: .constant(1), totalPages: 200)
+        MovieListView(title: "Now", data: TempMovies.moviesCards)
     }
 }

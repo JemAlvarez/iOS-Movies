@@ -13,7 +13,7 @@ struct MoreMoviesCardView: View {
     let title: String
     
     var body: some View {
-        NavigationLink(destination: MovieListView(title: title, data: movies, pageNum: .constant(0), totalPages: 0)) {
+        NavigationLink(destination: MovieListView(title: title, data: movies)) {
             Image(systemName: "plus")
                 .font(.system(size: 70, weight: .bold))
                 .frame(width: 145, height: 214)

@@ -20,7 +20,7 @@ struct SectionView: View {
                 .padding(.leading)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) {
-                    ForEach(movies) { item in
+                    ForEach(movies.prefix(movies.count / 2)) { item in
                         MovieCardView(movie: item)
                     }
                     MoreMoviesCardView(movies: movies, title: title)

@@ -1,0 +1,115 @@
+//
+//  Api.swift
+//  Movies
+//
+//  Created by Jem Alvarez on 7/22/20.
+//  Copyright © 2020 Jem Alvarez. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+struct Api {
+    static let baseUrl = "https://api.themoviedb.org/3"
+    static let imageUrl = "https://image.tmdb.org/t/p/original"
+    
+    static func getMovieCards (path: String, completion: @escaping ([MovieCard]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&region=US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let movies = try? JSONDecoder().decode(Root.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(movies.results)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getAllMovieCards (path: String, page: Int, completion: @escaping ([MovieCard]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&page=\(page)&region=US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let movies = try? JSONDecoder().decode(Root.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(movies.results)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getPage (path: String, completion: @escaping (Page) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&region=US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let page = try? JSONDecoder().decode(Page.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(page)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+}
+
+class UrlImageModel: ObservableObject {
+    @Published var image: UIImage?
+    var urlString: String?
+    
+    init(urlString: String?) {
+        self.urlString = urlString
+        loadImage()
+    }
+    
+    func loadImage() {
+        loadImageFromUrl()
+    }
+    
+    func loadImageFromUrl() {
+        guard let urlString = urlString else {return}
+        
+        let url = URL(string: urlString)!
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                print("Error: \(error!)")
+                return
+            }
+            guard let data = data else {
+                print("No data found")
+                return
+            }
+            DispatchQueue.main.async {
+                guard let loadedImage = UIImage(data: data) else {
+                    return
+                }
+                
+                self.image = loadedImage
+            }
+        }.resume()
+    }
+}

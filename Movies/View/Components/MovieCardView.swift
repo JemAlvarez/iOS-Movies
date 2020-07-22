@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct MovieCardView: View {
     let movie: MovieCard
@@ -17,11 +18,20 @@ struct MovieCardView: View {
         NavigationLink(destination: MovieView(movieId: movie.id)) {
             VStack {
                 ZStack(alignment: .bottom) {
-                    Image(movie.poster_path ?? "placeholder_vertical")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(8)
-                        .shadow(radius: 7, y: 10)
+                    URLImage(URL(string: "\(Api.imageUrl)\(movie.poster_path ?? "")")!, placeholder: {_ in
+                        Image("placeholder_vertical")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(8)
+                            .shadow(radius: 7, y: 10)
+                    })
+                    { proxy in
+                        proxy.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(8)
+                            .shadow(radius: 7, y: 10)
+                    }
                     
                     VStack(alignment: .trailing) {
                         Text("\(movie.vote_average, specifier: "%.1f")")
@@ -47,6 +57,7 @@ struct MovieCardView: View {
                 Text(movie.title)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
+                    .lineLimit(1)
             }
             .frame(width: width)
         }
