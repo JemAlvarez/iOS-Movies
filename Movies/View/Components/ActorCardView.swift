@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ActorCardView: View {
     let person: CastCard
@@ -15,22 +16,35 @@ struct ActorCardView: View {
     var body: some View {
         NavigationLink (destination: ActorView(personId: 123)) {
             VStack {
-                Image(person.profile_path ?? "placeholder_vertical")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: height)
-                    .cornerRadius(5)
-                    .shadow(radius: 4, y: 5)
+                URLImage(URL(string: "\(Api.imageUrl)\(person.profile_path ?? "")")!, incremental: true, placeholder: {_ in
+                    Image("placeholder_vertical")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: self.height)
+                        .cornerRadius(5)
+                        .shadow(radius: 4, y: 5)
+                })
+                { proxy in
+                    proxy.image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: self.height)
+                        .cornerRadius(5)
+                        .shadow(radius: 4, y: 5)
+                }
                 Text(person.name)
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
+                    .lineLimit(2)
                 
                 if person.character != nil {
                     Text(person.character ?? "")
                     .font(.system(size: 10))
                     .fontWeight(.thin)
+                    .lineLimit(1)
                 }
             }
+            .frame(width: 80)
         }
         .buttonStyle(PlainButtonStyle())
     }

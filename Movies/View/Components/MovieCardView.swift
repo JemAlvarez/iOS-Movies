@@ -45,7 +45,7 @@ struct MovieCardView: View {
                         
                         Spacer()
                         
-                        Text(movie.release_date)
+                        Text(movie.release_date.prefix(4))
                             .foregroundColor(Color("offwhite"))
                             .font(.footnote)
                             .frame(maxWidth: .infinity, alignment: .leading)

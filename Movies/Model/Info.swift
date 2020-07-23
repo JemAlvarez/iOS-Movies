@@ -18,7 +18,7 @@ struct MovieCard: Codable, Identifiable {
     let backdrop_path: String?
 }
 
-struct Movie: Identifiable {
+struct Movie: Codable, Identifiable {
     let id: Int
     let backdrop_path: String?
     let genres: [Genre]
@@ -31,7 +31,7 @@ struct Movie: Identifiable {
     let vote_average: Double
 }
 
-struct CastCard: Identifiable {
+struct CastCard: Codable, Identifiable {
     let id: Int
     let character: String?
     let name: String
@@ -48,14 +48,14 @@ struct Person: Identifiable {
     let profile_path: String?
 }
 
-struct Credit: Identifiable {
+struct Credit: Codable, Identifiable {
     let id: Int
     let name: String
     let release_date: String
     let poster_path: String?
 }
 
-struct Genre: Identifiable {
+struct Genre: Codable, Identifiable {
     let id: Int
     let name: String
 }
@@ -120,4 +120,8 @@ struct Search: Identifiable {
 
 struct Root: Codable {
     let results: [MovieCard]
+}
+
+struct MovieCredits: Codable {
+    let cast: [CastCard]
 }

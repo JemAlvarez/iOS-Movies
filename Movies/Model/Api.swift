@@ -55,6 +55,48 @@ struct Api {
         .resume()
     }
     
+    static func getMovie (path: String, completion: @escaping (Movie) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let movie = try? JSONDecoder().decode(Movie.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(movie)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getMovieCast (path: String, completion: @escaping ([CastCard]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let cast = try? JSONDecoder().decode(MovieCredits.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(cast.cast)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
     static func getPage (path: String, completion: @escaping (Page) -> ()) {
         guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&region=US") else {
             print("Invalid URL")
