@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Api {
     static let baseUrl = "https://api.themoviedb.org/3"
-    static let imageUrl = "https://image.tmdb.org/t/p/original"
+    static let imageUrl = "https://image.tmdb.org/t/p/"
     
     static func getMovieCards (path: String, completion: @escaping ([MovieCard]) -> ()) {
         guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&region=US") else {

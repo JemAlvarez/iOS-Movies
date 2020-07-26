@@ -41,7 +41,7 @@ struct MovieView: View {
                                 // blur when pulling down
                                 .blur(radius: g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * 0.1 : 0)
                             } else {
-                                URLImage(URL(string: "\(Api.imageUrl)\(self.movie.backdrop_path ?? "")")!, placeholder: {_ in
+                                URLImage(URL(string: "\(Api.imageUrl)w1280\(self.movie.backdrop_path ?? "")")!, placeholder: {_ in
                                     Image("placeholder_horizontal")
                                         .resizable()
                                         .scaledToFill()
@@ -62,6 +62,7 @@ struct MovieView: View {
                                         .opacity(self.show ? 1 : 0)
                                         // blur when pulling down
                                         .blur(radius: g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * 0.1 : 0)
+                                        .padding(.leading, g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * -1 : 0)
                                 }
                             }
                         }
@@ -80,7 +81,7 @@ struct MovieView: View {
                                     .cornerRadius(8)
                                     .shadow(radius: 7, y: 10)
                                 } else {
-                                    URLImage(URL(string: "\(Api.imageUrl)\(movie.poster_path ?? "")")!, incremental: true, placeholder: {_ in
+                                    URLImage(URL(string: "\(Api.imageUrl)w500\(movie.poster_path ?? "")")!, incremental: true, placeholder: {_ in
                                         Image("placeholder_vertical")
                                             .resizable()
                                             .scaledToFit()
@@ -233,7 +234,7 @@ struct MovieView: View {
                                             ForEach(recommendations) { movie in
                                                 NavigationLink(destination: MovieView(movieId: movie.id)) {
                                                     VStack {
-                                                        URLImage(URL(string: "\(Api.imageUrl)\(movie.poster_path ?? "")")!, incremental: true, placeholder: {_ in
+                                                        URLImage(URL(string: "\(Api.imageUrl)w185\(movie.poster_path ?? "")")!, incremental: true, placeholder: {_ in
                                                             Image("placeholder_vertical")
                                                                 .resizable()
                                                                 .scaledToFit()

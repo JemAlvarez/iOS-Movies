@@ -16,7 +16,7 @@ struct ActorCardView: View {
     var body: some View {
         NavigationLink (destination: ActorView(personId: 123)) {
             VStack {
-                URLImage(URL(string: "\(Api.imageUrl)\(person.profile_path ?? "")")!, incremental: true, placeholder: {_ in
+                URLImage(URL(string: "\(Api.imageUrl)w185\(person.profile_path ?? "")")!, incremental: true, placeholder: {_ in
                     Image("placeholder_vertical")
                         .resizable()
                         .scaledToFit()

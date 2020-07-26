@@ -17,7 +17,7 @@ struct HotView: View {
     var body: some View {
         NavigationLink(destination: MovieView(movieId: movie.id)) {
             ZStack(alignment: .bottom) {
-                URLImage(URL(string: "\(Api.imageUrl)\(movie.backdrop_path ?? "")")!, placeholder: {_ in
+                URLImage(URL(string: "\(Api.imageUrl)w780\(movie.backdrop_path ?? "")")!, placeholder: {_ in
                     Image("placeholder_horizontal")
                         .resizable()
                         .aspectRatio(contentMode: .fit)

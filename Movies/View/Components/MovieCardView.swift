@@ -18,7 +18,7 @@ struct MovieCardView: View {
         NavigationLink(destination: MovieView(movieId: movie.id)) {
             VStack {
                 ZStack(alignment: .bottom) {
-                    URLImage(URL(string: "\(Api.imageUrl)\(movie.poster_path ?? "")")!, placeholder: {_ in
+                    URLImage(URL(string: "\(Api.imageUrl)w300\(movie.poster_path ?? "")")!, placeholder: {_ in
                         Image("placeholder_vertical")
                             .resizable()
                             .aspectRatio(contentMode: .fit)

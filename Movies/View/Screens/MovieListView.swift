@@ -14,9 +14,27 @@ struct MovieListView: View {
     
     @ObservedObject var page = MoviePageObj(data: TempMovies.moviesCards)
     
+    @Environment(\.presentationMode) var mode
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack{
+                HStack {
+                    Button (action: {
+                        self.mode.wrappedValue.dismiss()
+                    }) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 22))
+                            Text("Back")
+                                .font(.system(size: 22))
+                        }
+                    }
+                    Spacer()
+                }
+                .foregroundColor(Color("main_gradient_1"))
+                .padding([.horizontal, .top])
+                
                 Text("\(title)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 20, weight: .bold))
@@ -45,7 +63,7 @@ struct MovieListView: View {
             .padding(.horizontal)
             .offset(y: -20)
         }
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
     }
 }
 

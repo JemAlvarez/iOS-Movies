@@ -14,9 +14,27 @@ struct TvListView: View {
     @Binding var pageNum: Int
     var totalPages: Int
     
+    @Environment(\.presentationMode) var mode
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack{
+                HStack {
+                    Button (action: {
+                        self.mode.wrappedValue.dismiss()
+                    }) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 22))
+                            Text("Back")
+                                .font(.system(size: 22))
+                        }
+                    }
+                    Spacer()
+                }
+                .foregroundColor(Color("main_gradient_1"))
+                .padding([.horizontal, .top])
+                
                 Text("\(title)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.system(size: 20, weight: .bold))
