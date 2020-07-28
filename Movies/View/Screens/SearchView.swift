@@ -7,39 +7,49 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct SearchView: View {
     var text: String
     
     @State var selection = 0
     
-    let searchMovies = TempMovies.searchMovies
-    let searchTv = TempMovies.searchTv
-    let searchPerson = TempMovies.searchPerson
+    @State var searchMovies = [Search]()
+    @State var searchTv = [Search]()
+    @State var searchPerson = [Search]()
     
     var body: some View {
         NavigationView {
             VStack {
-                Picker(selection: $selection, label: EmptyView()) {
-                    Text("Movies").tag(0)
-                    Text("TVs").tag(1)
-                    Text("Persons").tag(2)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding([.horizontal, .bottom])
-                
                 ScrollView (showsIndicators: false) {
+                    Picker(selection: $selection, label: EmptyView()) {
+                        Text("Movies").tag(0)
+                        Text("TVs").tag(1)
+                        Text("Persons").tag(2)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding([.horizontal, .bottom])
+                    
                     VStack {
                         if selection == 0 {
                             ForEach(searchMovies) { item in
                                 NavigationLink(destination: MovieView(movieId: item.id)) {
                                     VStack {
                                         ZStack(alignment: .bottom) {
-                                            Image(item.backdrop_path ?? "placeholder_horizontal")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .cornerRadius(8)
-                                                .shadow(radius: 7, y: 10)
+                                            URLImage(URL(string: "\(Api.imageUrl)w780\(item.backdrop_path ?? "")")!, placeholder: {_ in
+                                                Image("placeholder_horizontal")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .cornerRadius(8)
+                                                    .shadow(radius: 7, y: 10)
+                                            })
+                                            { proxy in
+                                                proxy.image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .cornerRadius(8)
+                                                    .shadow(radius: 7, y: 10)
+                                            }
                                             
                                             VStack {
                                                 Text("\(item.vote_average ?? 0.0, specifier: "%.1f")")
@@ -70,13 +80,25 @@ struct SearchView: View {
                             }
                         } else if selection == 2 {
                             ForEach(searchPerson) {item in
-                                ActorCardView(person: CastCard(id: item.id, character: nil, name: item.name ?? "_", profile_path: item.profile_path ?? "_"), height: 270)
+                                ActorCardView(person: CastCard(id: item.id, character: nil, name: item.name ?? "_", profile_path: item.profile_path ?? "_"), height: 230)
                             }
                         }
                     }
                 }
             }
-                
+            .onAppear{
+                Api.getSearch(searchTerm: self.text) { (search) in
+                    search.forEach { (item) in
+                        if item.media_type == "movie" {
+                            self.searchMovies.append(item)
+                        } else if item.media_type == "tv" {
+                            self.searchTv.append(item)
+                        } else if item.media_type == "person" {
+                            self.searchPerson.append(item)
+                        }
+                    }
+                }
+            }
             .navigationBarTitle(text)
         }
     }

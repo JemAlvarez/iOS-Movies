@@ -152,11 +152,20 @@ struct MovieView: View {
                                                     .padding(.trailing)
                                                     .foregroundColor(Color("main_gradient_2"))
                                                 
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.fill")
-                                                Image(systemName: "star.lefthalf.fill")
+                                                ForEach(0..<Int(movie.vote_average / 2), id: \.self) {_ in
+                                                    Image(systemName: "star.fill")
+                                                }
+                                                
+                                                if movie.vote_average.truncatingRemainder(dividingBy: 1) != 0 {
+                                                    Image(systemName: "star.lefthalf.fill")
+                                                    ForEach(0..<(4-Int(movie.vote_average / 2)), id: \.self) {_ in
+                                                        Image(systemName: "star")
+                                                    }
+                                                } else {
+                                                    ForEach(0..<(5-Int(movie.vote_average / 2)), id: \.self) {_ in
+                                                        Image(systemName: "star")
+                                                    }
+                                                }
                                             }
                                     )
                                     
@@ -198,16 +207,18 @@ struct MovieView: View {
                             
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
-                                    VStack (spacing: 20) {
+                                    VStack (alignment: .leading, spacing: 20) {
                                         HStack(alignment: .top) {
                                             ForEach(cast.prefix(cast.count / 2)) { person in
                                                 ActorCardView(person: person, height: 120)
+                                                    .frame(width: 80)
                                             }
                                         }
                                         
                                         HStack(alignment: .top) {
                                             ForEach(cast.suffix(cast.count / 2)) { person in
                                                 ActorCardView(person: person, height: 120)
+                                                    .frame(width: 80)
                                             }
                                         }
                                     }

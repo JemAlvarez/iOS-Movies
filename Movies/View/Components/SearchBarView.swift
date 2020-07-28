@@ -48,19 +48,8 @@ struct SearchBarView: View {
             .padding(show ? 5 : 0)
             .padding([.leading, .trailing], 6)
             .background(RoundedRectangle(cornerRadius: 30).foregroundColor(Color(UIColor.systemGray6)))
-            
-            VStack (spacing: 0) {
-                if show && !text.isEmpty {
-                    SearchResultView(title: "Joker")
-                    SearchResultView(title: "Joker")
-                    SearchResultView(title: "Joker")
-                    SearchResultView(title: "Joker")
-                    SearchResultView(title: "Joker")
-                }
-            }
         }
         .frame(maxWidth:.infinity)
-//        .opacity(show ? 1 : 0)
     }
     
     func haptic() {

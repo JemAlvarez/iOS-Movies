@@ -127,7 +127,26 @@ class TvPageObj: ObservableObject {
     }
 }
 
-struct Search: Identifiable {
+class PersonPageObj: ObservableObject {
+    @Published var pageNum: Int = 1 {
+        didSet {
+            Api.getAllPerson(path: "person/popular", page: pageNum) { (person) in
+                self.data = person
+            }
+            self.showFromObj = true
+        }
+    }
+    var totalPages: Int = 500
+    @Published var showFromObj = false
+    
+    @Published var data: [CastCard]
+    
+    init(data: [CastCard]) {
+        self.data = data
+    }
+}
+
+struct Search: Codable, Identifiable {
     let id: Int
     let backdrop_path: String?
     let profile_path: String?
@@ -148,10 +167,14 @@ struct Root2: Codable {
     let results: [TVCard]
 }
 
-struct MovieCredits: Codable {
-    let cast: [CastCard]
+struct Root3: Codable {
+    let results: [CastCard]
 }
 
-struct PersonCredits: Codable {
-    let cast: [Credit]
+struct Root4: Codable {
+    let results: [Search]
+}
+
+struct MovieCredits: Codable {
+    let cast: [CastCard]
 }

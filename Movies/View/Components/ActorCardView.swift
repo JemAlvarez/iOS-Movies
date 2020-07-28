@@ -44,7 +44,6 @@ struct ActorCardView: View {
                     .lineLimit(1)
                 }
             }
-            .frame(width: 80)
         }
         .buttonStyle(PlainButtonStyle())
     }

@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct PeopleView: View {
-    let people = TempMovies.tvCast
+    @State var people = TempMovies.tvCast
     
     @State var show = false
     @State var blurAmount: CGFloat = 20
     
-    @State var pageNum = 1
-    let totalPages = 2000
+    @ObservedObject var page = PersonPageObj(data: TempMovies.tvCast)
     
     var body: some View {
         NavigationView {
@@ -28,21 +27,21 @@ struct PeopleView: View {
                         .padding()
                         .background(Color("bg"))
                     
-                    HStack(spacing: 30) {
+                    HStack(alignment: .top, spacing: 30) {
                         VStack(spacing: 20) {
-                            ForEach(people.prefix(people.count / 2)) { person in
-                                ActorCardView(person: person, height: 190)
+                            ForEach(page.showFromObj ? page.data.prefix(page.data.count / 2) : people.prefix(people.count / 2)) { person in
+                                ActorCardView(person: person, height: 180)
                             }
                         }
                         
                         VStack(spacing: 20) {
-                            ForEach(people.suffix(people.count / 2)) { person in
-                                ActorCardView(person: person, height: 190)
+                            ForEach(page.showFromObj ? page.data.suffix(page.data.count / 2) : people.suffix(people.count / 2)) { person in
+                                ActorCardView(person: person, height: 180)
                             }
                         }
                     }
                     
-                    PaginationView(pageNum: $pageNum, totalPages: totalPages)
+                    PaginationView(pageNum: $page.pageNum, totalPages: page.totalPages)
                         .padding(.bottom, 90)
                 }
                 .padding(.bottom)
@@ -71,6 +70,12 @@ struct PeopleView: View {
                 
                 NavBarView(title: "PEOPLE", show: $show)
             }
+            .onAppear{
+                Api.getAllPerson(path: "person/popular", page: 1) { (people) in
+                    self.people = people
+                }
+            }
+                
             .navigationBarTitle("PEOPLE")
             .navigationBarHidden(true)
         }

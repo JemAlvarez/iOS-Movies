@@ -13,7 +13,6 @@ struct ActorView: View {
     let personId: Int
     
     @State var person = TempMovies.person
-    @State var knownFor = TempMovies.movieCredits
     
     @State var showBio = false
     
@@ -120,102 +119,7 @@ struct ActorView: View {
                             .foregroundColor(Color("blue"))
                             .padding(.top)
                         }
-                        
-                        VStack {
-                            Text("Known For")
-                                .padding(.leading)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical)
-                        .background(Color(UIColor.systemGray6))
-                        .padding(.top)
-                        
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                VStack (spacing: 20) {
-                                    HStack {
-                                        ForEach(knownFor) { item in
-//                                            NavigationLink(destination: item.media_type == "movie" ? MovieView(movieId: item.id) : item.media_type == "tv" ? TvView(tvId: item.id) : MovieView(movieId: item.id)) {
-//                                                VStack {
-//                                                    Image(item.poster_path ?? "placeholder_vertical")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(height: 120)
-//                                                        .cornerRadius(5)
-//                                                        .shadow(radius: 4, y: 5)
-//                                                    Text(item.title ?? "")
-//                                                        .font(.system(size: 12))
-//                                                        .fontWeight(.semibold)
-//                                                        .lineLimit(1)
-//                                                    Text(item.release_date ?? "")
-//                                                        .font(.system(size: 10))
-//                                                        .fontWeight(.thin)
-//                                                }
-//                                            }
-//                                            .buttonStyle(PlainButtonStyle())
-                                            NavigationLink(destination: MovieView(movieId: item.id)) {
-                                                VStack {
-                                                    Image(item.poster_path ?? "placeholder_vertical")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(height: 120)
-                                                        .cornerRadius(5)
-                                                        .shadow(radius: 4, y: 5)
-                                                    Text(item.title ?? "")
-                                                        .font(.system(size: 12))
-                                                        .fontWeight(.semibold)
-                                                        .lineLimit(1)
-                                                    Text(item.release_date ?? "")
-                                                        .font(.system(size: 10))
-                                                        .fontWeight(.thin)
-                                                }
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-//                                            if item.media_type == "movie" {
-//                                                NavigationLink(destination: MovieView(movieId: item.id)) {
-//                                                    VStack {
-//                                                        Image(item.poster_path ?? "placeholder_vertical")
-//                                                            .resizable()
-//                                                            .scaledToFit()
-//                                                            .frame(height: 120)
-//                                                            .cornerRadius(5)
-//                                                            .shadow(radius: 4, y: 5)
-//                                                        Text(item.title ?? "")
-//                                                            .font(.system(size: 12))
-//                                                            .fontWeight(.semibold)
-//                                                            .lineLimit(1)
-//                                                        Text(item.release_date ?? "")
-//                                                            .font(.system(size: 10))
-//                                                            .fontWeight(.thin)
-//                                                    }
-//                                                }
-//                                                .buttonStyle(PlainButtonStyle())
-//                                            } else if item.media_type == "tv" {
-//                                                NavigationLink(destination: TvView(tvId: item.id)) {
-//                                                    VStack {
-//                                                        Image(item.poster_path ?? "placeholder_vertical")
-//                                                            .resizable()
-//                                                            .scaledToFit()
-//                                                            .frame(height: 120)
-//                                                            .cornerRadius(5)
-//                                                            .shadow(radius: 4, y: 5)
-//                                                        Text(item.name ?? "")
-//                                                            .font(.system(size: 12))
-//                                                            .fontWeight(.semibold)
-//                                                            .lineLimit(1)
-//                                                        Text(item.first_air_date ?? "")
-//                                                            .font(.system(size: 10))
-//                                                            .fontWeight(.thin)
-//                                                    }
-//                                                }
-//                                                .buttonStyle(PlainButtonStyle())
-//                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .padding([.horizontal, .bottom])
+                        .padding(.bottom)
                     }
                     
                     BackNavBarView(show: .constant(false))
@@ -231,10 +135,6 @@ struct ActorView: View {
         .onAppear{
             Api.getPerson(path: "person/\(self.personId)") { (person) in
                 self.person = person
-            }
-            
-            Api.getPersonCredits(path: "person/\(self.personId)/combined_credits") { (credits) in
-                self.knownFor = credits
             }
         }
     }

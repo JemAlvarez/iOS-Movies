@@ -181,17 +181,38 @@ struct Api {
         .resume()
     }
     
-    static func getPersonCredits (path: String, completion: @escaping ([Credit]) -> ()) {
-        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US") else {
+    static func getAllPerson (path: String, page: Int, completion: @escaping ([CastCard]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&page=\(page)") else {
             print("Invalid URL")
             return
         }
         
         URLSession.shared.dataTask(with: url) { (data, _, err) in
             if let data = data {
-                if let person = try? JSONDecoder().decode(PersonCredits.self, from: data) {
+                if let person = try? JSONDecoder().decode(Root3.self, from: data) {
                     DispatchQueue.main.async {
-                        completion(person.cast)
+                        completion(person.results)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getSearch (searchTerm: String, completion: @escaping ([Search]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/search/multi?api_key=\(API_KEY.apiKey)&language=en-US&query=\(searchTerm)&page=1&include_adult=false&region=US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let search = try? JSONDecoder().decode(Root4.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(search.results)
                     }
                     
                     return
