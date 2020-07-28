@@ -38,7 +38,7 @@ struct CastCard: Codable, Identifiable {
     let profile_path: String?
 }
 
-struct Person: Identifiable {
+struct Person: Codable, Identifiable {
     let id: Int
     let birthday: String?
     let name: String
@@ -50,9 +50,12 @@ struct Person: Identifiable {
 
 struct Credit: Codable, Identifiable {
     let id: Int
-    let name: String
-    let release_date: String
+    let name: String?
+    let title: String?
+    let release_date: String?
+    let first_air_date: String?
     let poster_path: String?
+    let media_type: String
 }
 
 struct Genre: Codable, Identifiable {
@@ -60,7 +63,7 @@ struct Genre: Codable, Identifiable {
     let name: String
 }
 
-struct TVCard: Identifiable {
+struct TVCard: Codable, Identifiable {
     let id: Int
     let name: String
     let poster_path: String?
@@ -68,7 +71,7 @@ struct TVCard: Identifiable {
     let vote_average: Double
 }
 
-struct TV: Identifiable {
+struct TV: Codable, Identifiable {
     let id: Int
     let backdrop_path: String?
     let genres: [Genre]
@@ -105,6 +108,25 @@ class MoviePageObj: ObservableObject {
     }
 }
 
+class TvPageObj: ObservableObject {
+    @Published var pageNum: Int = 1 {
+        didSet {
+            Api.getTvCards(path: "tv/popular", page: pageNum) { (tv) in
+                self.data = tv
+            }
+            self.showFromObj = true
+        }
+    }
+    var totalPages: Int = 500
+    @Published var showFromObj = false
+    
+    @Published var data: [TVCard]
+    
+    init(data: [TVCard]) {
+        self.data = data
+    }
+}
+
 struct Search: Identifiable {
     let id: Int
     let backdrop_path: String?
@@ -122,6 +144,14 @@ struct Root: Codable {
     let results: [MovieCard]
 }
 
+struct Root2: Codable {
+    let results: [TVCard]
+}
+
 struct MovieCredits: Codable {
     let cast: [CastCard]
+}
+
+struct PersonCredits: Codable {
+    let cast: [Credit]
 }

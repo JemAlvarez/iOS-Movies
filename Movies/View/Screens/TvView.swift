@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct TvView: View {
     @State var show = true
@@ -14,11 +15,11 @@ struct TvView: View {
     
     let tvId: Int
     
-    let recommendations = TempMovies.tvCards
+    @State var recommendations = TempMovies.tvCards
     
-    let tv = TempMovies.tv
+    @State var tv = TempMovies.tv
     
-    let cast = TempMovies.tvCast
+    @State var cast = TempMovies.tvCast
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -29,7 +30,8 @@ struct TvView: View {
                         
                         // image drag stretchy animation
                         GeometryReader { g in
-                            Image(self.tv.backdrop_path ?? "placeholder_horizontal")
+                            if self.tv.backdrop_path?.count ?? 0 < 15 {
+                                Image("placeholder_horizontal")
                                 .resizable()
                                 .scaledToFill()
                                 .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
@@ -38,30 +40,83 @@ struct TvView: View {
                                 .opacity(self.show ? 1 : 0)
                                 // blur when pulling down
                                 .blur(radius: g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * 0.1 : 0)
+                            } else {
+                                URLImage(URL(string: "\(Api.imageUrl)w1280\(self.tv.backdrop_path ?? "")")!, placeholder: {_ in
+                                    Image("placeholder_horizontal")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
+                                        // increasing height by drag amount
+                                        .frame(height: g.frame(in: .global).minY > 0 ? 350 + g.frame(in: .global).minY : 350)
+                                        .opacity(self.show ? 1 : 0)
+                                        // blur when pulling down
+                                        .blur(radius: g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * 0.1 : 0)
+                                })
+                                { proxy in
+                                    proxy.image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
+                                        // increasing height by drag amount
+                                        .frame(height: g.frame(in: .global).minY > 0 ? 350 + g.frame(in: .global).minY : 350)
+                                        .opacity(self.show ? 1 : 0)
+                                        // blur when pulling down
+                                        .blur(radius: g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * 0.1 : 0)
+                                        .padding(.leading, g.frame(in: .global).minY > 0 ? g.frame(in: .global).minY * -1 : 0)
+                                }
+                            }
                         }
                             // fixing default frame height
                             .frame(height: 350)
+                            .padding(.leading, -100)
                         
                         VStack {
                             //                      top part
                             HStack(spacing: 20) {
-                                Image(tv.poster_path ?? "placeholder_vertical")
+                                if tv.poster_path?.count ?? 0 < 15 {
+                                    Image("placeholder_vertical")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 140)
                                     .cornerRadius(8)
                                     .shadow(radius: 7, y: 10)
+                                } else {
+                                    URLImage(URL(string: "\(Api.imageUrl)w500\(tv.poster_path ?? "")")!, incremental: true, placeholder: {_ in
+                                        Image("placeholder_vertical")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 140)
+                                            .cornerRadius(8)
+                                            .shadow(radius: 7, y: 10)
+                                    })
+                                    { proxy in
+                                        proxy.image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 140)
+                                            .cornerRadius(8)
+                                            .shadow(radius: 7, y: 10)
+                                    }
+                                }
                                 
                                 VStack(alignment: .leading) {
                                     Group {
                                         Text(tv.name.uppercased())
-                                            .font(.system(size: 22))
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(Color.white)
-                                            +
-                                            Text("(\(tv.first_air_date))")
-                                                .foregroundColor(Color.white.opacity(0.8))
-                                                .font(.system(size: 20))
+                                        .font(.system(size: 22))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.white)
+                                        +
+                                        Text("(")
+                                        .foregroundColor(Color.white.opacity(0.8))
+                                        .font(.system(size: 20))
+                                        +
+                                        Text(tv.first_air_date.prefix(4))
+                                            .foregroundColor(Color.white.opacity(0.8))
+                                            .font(.system(size: 20))
+                                        +
+                                        Text(")")
+                                        .foregroundColor(Color.white.opacity(0.8))
+                                        .font(.system(size: 20))
                                     }
                                     .frame(height: 75)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,7 +133,7 @@ struct TvView: View {
                                         .font(.system(size: 11, weight: .bold))
                                     
                                     HStack {
-                                        ForEach(tv.genres) { genre in
+                                        ForEach(tv.genres.prefix(3)) { genre in
                                             Text(genre.name)
                                                 .padding(.top, 5)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -142,13 +197,13 @@ struct TvView: View {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
                                     VStack (spacing: 20) {
-                                        HStack {
+                                        HStack(alignment: .top) {
                                             ForEach(cast.prefix(cast.count / 2)) { person in
                                                 ActorCardView(person: person, height: 120)
                                             }
                                         }
                                         
-                                        HStack {
+                                        HStack(alignment: .top) {
                                             ForEach(cast.suffix(cast.count / 2)) { person in
                                                 ActorCardView(person: person, height: 120)
                                             }
@@ -177,17 +232,28 @@ struct TvView: View {
                                             ForEach(recommendations) { tv in
                                                 NavigationLink(destination: TvView(tvId: tv.id)) {
                                                     VStack {
-                                                        Image(tv.poster_path ?? "placeholder_vertical")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .frame(height: 120)
-                                                            .cornerRadius(5)
-                                                            .shadow(radius: 4, y: 5)
+                                                        URLImage(URL(string: "\(Api.imageUrl)w185\(tv.poster_path ?? "")")!, incremental: true, placeholder: {_ in
+                                                            Image("placeholder_vertical")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(height: 120)
+                                                                .cornerRadius(5)
+                                                                .shadow(radius: 4, y: 5)
+                                                        })
+                                                        { proxy in
+                                                            proxy.image
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(height: 120)
+                                                                .cornerRadius(5)
+                                                                .shadow(radius: 4, y: 5)
+                                                        }
                                                         Text(tv.name)
                                                             .font(.system(size: 12))
                                                             .fontWeight(.semibold)
                                                             .lineLimit(1)
                                                     }
+                                                    .frame(width: 80)
                                                 }
                                                 .buttonStyle(PlainButtonStyle())
                                             }
@@ -206,9 +272,17 @@ struct TvView: View {
                         .frame(width: UIScreen.main.bounds.size.width)
                         .padding(.top)
                 }
-                    
-                    
-                    
+                .onAppear{
+                    Api.getTv(path: "tv/\(self.tvId)") { (tv) in
+                        self.tv = tv
+                    }
+                    Api.getTvCards(path: "tv/\(self.tvId)/recommendations", page: 1) { (tv) in
+                        self.recommendations = tv
+                    }
+                    Api.getMovieCast(path: "tv/\(self.tvId)/credits") { cast in
+                        self.cast = cast
+                    }
+                }
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
             }

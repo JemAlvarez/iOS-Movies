@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct TVCardView: View {
     let type: String
@@ -14,15 +15,24 @@ struct TVCardView: View {
     private let width = UIScreen.main.bounds.size.width
     
     var body: some View {
-        NavigationLink(destination: TvView(tvId: 123)) {
+        NavigationLink(destination: TvView(tvId: tv.id)) {
             if type == "s" {
                 VStack {
                     ZStack(alignment: .bottom) {
-                        Image(tv.poster_path ?? "placeholder_vertical")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(8)
-                            .shadow(radius: 7, y: 10)
+                        URLImage(URL(string: "\(Api.imageUrl)w300\(tv.poster_path ?? "")")!, placeholder: {_ in
+                            Image("placeholder_vertical")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(8)
+                                .shadow(radius: 7, y: 10)
+                        })
+                        { proxy in
+                            proxy.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(8)
+                                .shadow(radius: 7, y: 10)
+                        }
                         
                         VStack {
                             Text("\(tv.vote_average, specifier: "%.1f")")
@@ -43,16 +53,26 @@ struct TVCardView: View {
                     Text(tv.name)
                         .font(.system(size: 18))
                         .fontWeight(.bold)
+                        .lineLimit(1)
                 }
                 .frame(width: width * 0.35)
             } else if type == "l" {
                 VStack {
                     ZStack(alignment: .bottom) {
-                        Image(tv.backdrop_path ?? "placeholder_horizontal")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(8)
-                            .shadow(radius: 7, y: 10)
+                        URLImage(URL(string: "\(Api.imageUrl)w780\(tv.backdrop_path ?? "")")!, placeholder: {_ in
+                            Image("placeholder_horizontal")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(8)
+                                .shadow(radius: 7, y: 10)
+                        })
+                        { proxy in
+                            proxy.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(8)
+                                .shadow(radius: 7, y: 10)
+                        }
                         
                         VStack {
                             Text("\(tv.vote_average, specifier: "%.1f")")
@@ -73,6 +93,7 @@ struct TVCardView: View {
                     Text(tv.name)
                         .font(.system(size: 18))
                         .fontWeight(.bold)
+                        .lineLimit(1)
                 }
                 .frame(width: width - 40)
             }

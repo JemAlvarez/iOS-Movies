@@ -117,6 +117,90 @@ struct Api {
         }
         .resume()
     }
+    
+    static func getTvCards (path: String, page: Int, completion: @escaping ([TVCard]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US&page=\(page)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let tvs = try? JSONDecoder().decode(Root2.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(tvs.results)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getTv (path: String, completion: @escaping (TV) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let tv = try? JSONDecoder().decode(TV.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(tv)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getPerson (path: String, completion: @escaping (Person) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let person = try? JSONDecoder().decode(Person.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(person)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
+    
+    static func getPersonCredits (path: String, completion: @escaping ([Credit]) -> ()) {
+        guard let url = URL(string: "\(baseUrl)/\(path)?api_key=\(API_KEY.apiKey)&language=en-US") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, err) in
+            if let data = data {
+                if let person = try? JSONDecoder().decode(PersonCredits.self, from: data) {
+                    DispatchQueue.main.async {
+                        completion(person.cast)
+                    }
+                    
+                    return
+                }
+            }
+            print("Fetch failed: \(err?.localizedDescription ?? "Unknown Error")")
+        }
+        .resume()
+    }
 }
 
 class UrlImageModel: ObservableObject {

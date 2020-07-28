@@ -14,7 +14,7 @@ struct ActorCardView: View {
     let height: CGFloat
     
     var body: some View {
-        NavigationLink (destination: ActorView(personId: 123)) {
+        NavigationLink (destination: ActorView(personId: person.id)) {
             VStack {
                 URLImage(URL(string: "\(Api.imageUrl)w185\(person.profile_path ?? "")")!, incremental: true, placeholder: {_ in
                     Image("placeholder_vertical")

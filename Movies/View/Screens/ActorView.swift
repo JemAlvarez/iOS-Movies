@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ActorView: View {
     let personId: Int
     
-    let person = TempMovies.person
-    let knownFor = TempMovies.movieCredits
+    @State var person = TempMovies.person
+    @State var knownFor = TempMovies.movieCredits
     
     @State var showBio = false
     
@@ -21,13 +22,34 @@ struct ActorView: View {
             ScrollView(showsIndicators: false ) {
                 ZStack(alignment: .top) {
                     VStack {
-                        Image(person.profile_path ?? "placeholder_vertical")
+                        if person.profile_path?.count ?? 0 < 15 {
+                            Image("placeholder_vertical")
                             .resizable()
                             .scaledToFit()
                             .frame(height: 260)
                             .cornerRadius(20)
                             .shadow(radius: 5, y: 7)
                             .padding(.top, 100)
+                        } else {
+                            URLImage(URL(string: "\(Api.imageUrl)h632\(person.profile_path ?? "")")!, incremental: true, placeholder: {_ in
+                                Image("placeholder_vertical")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 260)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 5, y: 7)
+                                    .padding(.top, 100)
+                            })
+                            { proxy in
+                                proxy.image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 260)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 5, y: 7)
+                                    .padding(.top, 100)
+                            }
+                        }
                         
                         Text(person.name)
                             .font(.title)
@@ -112,25 +134,82 @@ struct ActorView: View {
                             HStack {
                                 VStack (spacing: 20) {
                                     HStack {
-                                        ForEach(knownFor) { movie in
-                                            NavigationLink(destination: MovieView(movieId: movie.id)) {
+                                        ForEach(knownFor) { item in
+//                                            NavigationLink(destination: item.media_type == "movie" ? MovieView(movieId: item.id) : item.media_type == "tv" ? TvView(tvId: item.id) : MovieView(movieId: item.id)) {
+//                                                VStack {
+//                                                    Image(item.poster_path ?? "placeholder_vertical")
+//                                                        .resizable()
+//                                                        .scaledToFit()
+//                                                        .frame(height: 120)
+//                                                        .cornerRadius(5)
+//                                                        .shadow(radius: 4, y: 5)
+//                                                    Text(item.title ?? "")
+//                                                        .font(.system(size: 12))
+//                                                        .fontWeight(.semibold)
+//                                                        .lineLimit(1)
+//                                                    Text(item.release_date ?? "")
+//                                                        .font(.system(size: 10))
+//                                                        .fontWeight(.thin)
+//                                                }
+//                                            }
+//                                            .buttonStyle(PlainButtonStyle())
+                                            NavigationLink(destination: MovieView(movieId: item.id)) {
                                                 VStack {
-                                                    Image(movie.poster_path ?? "placeholder_vertical")
+                                                    Image(item.poster_path ?? "placeholder_vertical")
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(height: 120)
                                                         .cornerRadius(5)
                                                         .shadow(radius: 4, y: 5)
-                                                    Text(movie.name)
+                                                    Text(item.title ?? "")
                                                         .font(.system(size: 12))
                                                         .fontWeight(.semibold)
                                                         .lineLimit(1)
-                                                    Text(movie.release_date)
+                                                    Text(item.release_date ?? "")
                                                         .font(.system(size: 10))
                                                         .fontWeight(.thin)
                                                 }
                                             }
                                             .buttonStyle(PlainButtonStyle())
+//                                            if item.media_type == "movie" {
+//                                                NavigationLink(destination: MovieView(movieId: item.id)) {
+//                                                    VStack {
+//                                                        Image(item.poster_path ?? "placeholder_vertical")
+//                                                            .resizable()
+//                                                            .scaledToFit()
+//                                                            .frame(height: 120)
+//                                                            .cornerRadius(5)
+//                                                            .shadow(radius: 4, y: 5)
+//                                                        Text(item.title ?? "")
+//                                                            .font(.system(size: 12))
+//                                                            .fontWeight(.semibold)
+//                                                            .lineLimit(1)
+//                                                        Text(item.release_date ?? "")
+//                                                            .font(.system(size: 10))
+//                                                            .fontWeight(.thin)
+//                                                    }
+//                                                }
+//                                                .buttonStyle(PlainButtonStyle())
+//                                            } else if item.media_type == "tv" {
+//                                                NavigationLink(destination: TvView(tvId: item.id)) {
+//                                                    VStack {
+//                                                        Image(item.poster_path ?? "placeholder_vertical")
+//                                                            .resizable()
+//                                                            .scaledToFit()
+//                                                            .frame(height: 120)
+//                                                            .cornerRadius(5)
+//                                                            .shadow(radius: 4, y: 5)
+//                                                        Text(item.name ?? "")
+//                                                            .font(.system(size: 12))
+//                                                            .fontWeight(.semibold)
+//                                                            .lineLimit(1)
+//                                                        Text(item.first_air_date ?? "")
+//                                                            .font(.system(size: 10))
+//                                                            .fontWeight(.thin)
+//                                                    }
+//                                                }
+//                                                .buttonStyle(PlainButtonStyle())
+//                                            }
                                         }
                                     }
                                 }
@@ -148,6 +227,15 @@ struct ActorView: View {
             }
             
             BottomCard(show: $showBio, text: person.biography, hideOffset: 1200)
+        }
+        .onAppear{
+            Api.getPerson(path: "person/\(self.personId)") { (person) in
+                self.person = person
+            }
+            
+            Api.getPersonCredits(path: "person/\(self.personId)/combined_credits") { (credits) in
+                self.knownFor = credits
+            }
         }
     }
 }

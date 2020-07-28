@@ -10,9 +10,9 @@ import SwiftUI
 
 struct TvListView: View {
     var title: String
-    var data: [TVCard]
-    @Binding var pageNum: Int
-    var totalPages: Int
+    @State var data: [TVCard]
+    
+    @ObservedObject var page = TvPageObj(data: TempMovies.tvCards)
     
     @Environment(\.presentationMode) var mode
     
@@ -44,30 +44,31 @@ struct TvListView: View {
                 
                     HStack(spacing: 30) {
                         VStack {
-                            ForEach(data.prefix(data.count / 2)) { tv in
+                            ForEach(page.showFromObj ? page.data.prefix(page.data.count / 2) : data.prefix(data.count / 2)) { tv in
                                 TVCardView(type: "s", tv: tv)
                             }
                         }
                         
                         VStack {
-                            ForEach(data.suffix(data.count / 2)) { tv in
+                            ForEach(page.showFromObj ? page.data.suffix(page.data.count / 2) : data.suffix(data.count / 2)) { tv in
                                 TVCardView(type: "s", tv: tv)
                             }
                         }
                     }
                 
                 if title == "All" {
-                    PaginationView(pageNum: $pageNum, totalPages: totalPages)
+                    PaginationView(pageNum: $page.pageNum, totalPages: page.totalPages)
                 }
             }
             .padding(.horizontal)
             .offset(y: -20)
         }
+        .navigationBarHidden(true)
     }
 }
 
 struct TvListView_Previews: PreviewProvider {
     static var previews: some View {
-        TvListView(title: "Popular", data: TempMovies.tvCards, pageNum: .constant(1), totalPages: 200)
+        TvListView(title: "Popular", data: TempMovies.tvCards)
     }
 }

@@ -9,30 +9,26 @@
 import SwiftUI
 
 struct ShowsView: View {
-    let tvs = TempMovies.tvCards
+    @State var popularTv = TempMovies.tvCards
+    @State var onAirTv = TempMovies.tvCards
     
     @State var show = false
     @State var blurAmount: CGFloat = 20
-    
-    @State var pageNum = 1
-    let totalPages = 2000
     
     var body: some View {
         NavigationView {
             ZStack (alignment: .top) {
                 ScrollView(showsIndicators: false) {
-                    Text("Latest")
+                    Text("On Air")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
                         .font(.system(size: 19, weight: .bold))
                     
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack (alignment: .top, spacing: 20) {
-                            ForEach(tvs) { tv in
+                            ForEach(onAirTv) { tv in
                                 TVCardView(type: "s", tv: tv)
                             }
-
-                            MoreTvsCardView(tv: tvs, title: "Latest")
                         }
                         .padding(.horizontal)
                     }
@@ -45,13 +41,13 @@ struct ShowsView: View {
                     
                     ScrollView(showsIndicators: false) {
                         VStack {
-                            ForEach (tvs) { tv in
+                            ForEach (popularTv) { tv in
                                 TVCardView(type: "l", tv: tv)
                             }
                         }
                     }
                     
-                    NavigationLink(destination: TvListView(title: "All", data: tvs, pageNum: $pageNum, totalPages: totalPages)) {
+                    NavigationLink(destination: TvListView(title: "All", data: popularTv)) {
                         HStack {
                             Text("View All")
                                 .foregroundColor(Color("main_gradient_1"))
@@ -93,6 +89,14 @@ struct ShowsView: View {
                 }
                 
                 NavBarView(title: "TV", show: $show)
+            }
+            .onAppear {
+                Api.getTvCards(path: "tv/on_the_air", page: 1) { (tv) in
+                    self.onAirTv = tv
+                }
+                Api.getTvCards(path: "tv/popular", page: 1) { (tv) in
+                    self.popularTv = tv
+                }
             }
             .navigationBarTitle("TV")
             .navigationBarHidden(true)
